@@ -80,7 +80,7 @@ Nicht die ganze QM kann durch dieses Prinzip hergeleitet werden, da es auch rein
   boxed title style={size=small,colframe=lime!75!black} ]
   Der Vektorraum der Eigenfunktionen $\varphi_n$ des Hamilton-Operators $\hat H$ ist ein Hilbert-Raum mit Skalarprodukt definiert in Kapitel 1. \\
   Die Gesamtheit aller (i. Allg. komplexen) orthonormalen (d.h. $\braket{m}{n} = \delta_{mn}$) Eigenfunktionen bildet eine Basis des Hilbert-Raums. Jede beliebige Zustandsfunktion $\Psi$ in diesem Raum kann als Linearkombination der Basisfunktionen $\varphi_n$ dargestellt werden. $$\Psi = \sum_n c_n \varphi_n.$$ \\
-  Jeder messbaren physikalischen Eigenschaft eines Systems entspricht ein selbstadjungierter, linearer Operator $\hat A$. Dieser physikalischen Eigenschaft kann nur dann ein Wewrt zugeorndnet werden, wenn der Zustandsvektor $\Psi$ des Systems ein Eigenvektor von $\hat A$ ist, d.h. $\Psi = \varphi_n$ mit $\hat A \varphi_n = a_n \varphi_n$, wobei $a_n$ dann der Wert dieser Eigenschaft ist.
+  Jeder messbaren physikalischen Eigenschaft eines Systems entspricht ein selbstadjungierter, linearer Operator $\hat A$. Dieser physikalischen Eigenschaft kann nur dann ein Wert zugeorndnet werden, wenn der Zustandsvektor $\Psi$ des Systems ein Eigenvektor von $\hat A$ ist, d.h. $\Psi = \varphi_n$ mit $\hat A \varphi_n = a_n \varphi_n$, wobei $a_n$ dann der Wert dieser Eigenschaft ist.
 \end{tcolorbox}
 
 * Ist das System im Zustand $\varphi_n$, ergibt eine Messung von $A$ den Wert $a_n$ und das System bleibt unverändert.
@@ -99,6 +99,76 @@ Nicht die ganze QM kann durch dieses Prinzip hergeleitet werden, da es auch rein
 
 ## Matrixdarstellung von Operatoren
 Sei $\qty{\varphi_n}$ eine vollständige, orthonormierte Basis von Eigenfunktionen des Operators $\hat A$. $\hat A$ kann äquivalent als Matrix dargestellt werden, wobei für die Elemente der Matrix $$A_{nm} = \int \varphi_n^* \hat A \varphi_m \dd{\tau} = \mel{n}{\hat A}{m}$$ gilt.
+
+\begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=white,colframe=orange,colbacktitle=orange,
+  title=Theorem 1,fonttitle=\bfseries\sffamily,
+  boxed title style={size=small,colframe=orange} ]
+  Selbstadjungierte, lineare Operatoren haben reelle Eigenwerte.
+\end{tcolorbox}
+
+* Laut Postulat 2 erhält man bei einer Messung immer einen Eigenwert des Operators. Da diese immer reell sind, müssen quantenmechanische Operatoren demnach selbstadjungiert sein.
+
+\begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=white,colframe=orange,colbacktitle=orange,
+  title=Theorem 2,fonttitle=\bfseries\sffamily,
+  boxed title style={size=small,colframe=orange} ]
+  Eigenfunktionen von selbstadjungierten Operatoren sind orthogonal, wenn sie verschiedene Eigenwerte haben.
+\end{tcolorbox}
+
+* Wenn zwei oder mehrere Eigenfunktionen denselben Eigenwert haben, sind sie nicht automatisch orthogonal. Sie können aber immer orthogonal gewählt werden (mit Gram-Schmidt).
+
+\begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=white,colframe=orange,colbacktitle=orange,
+  title=Theorem 3,fonttitle=\bfseries\sffamily,
+  boxed title style={size=small,colframe=orange} ]
+  Wenn zwei Operatoren $\hat A$ und $\hat B$ eine gemeinsame (vollständige) Basis von Eigenfunktionen $\varphi_i$ haben, dann kommutieren die Operatoren.
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=white,colframe=orange,colbacktitle=orange,
+  title=Theorem 4,fonttitle=\bfseries\sffamily,
+  boxed title style={size=small,colframe=orange} ]
+  Wenn zwei Operatoren kommutieren, dann kann man eine gemeinsame (vollständige) Basis von Eigenfunktionen der beiden Operatoren ermitteln.
+\end{tcolorbox}
+
+
+## Bedingungen für Wellenfunktionen
+1. $\Psi$ muss quadratisch integrierbar sein.
+  Diese Bedingung gilt nur für gebundene Systeme. Nicht gebundene Systeme (z.B. freies Teilchen) lassen sich nicht einfach normieren.
+
+2. $\Psi$ muss eindeutig definiert sein (single-valued).
+
+3. $\Psi$ muss stetig sein
+
+4. $\dv{\Psi}{x}$ muss differenzierbar sein (also $\Psi$ zweimal diff'bar), und ist im Allgemeinen, aber nicht immer, stetig.
+
+
+## Heisenbergsche Unbestimmtheitsrelation
+TODO
+
+\begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
+  title=Postulat 4,fonttitle=\bfseries\sffamily,
+  boxed title style={size=small,colframe=lime!75!black} ]
+  Die Zeitevolution eines abgeschlossenen Systems mit zeitunabhängigem Hamilton-Operator wird durch die zeitabhängige Schrödinger-Gleichung beschrieben:
+  $$i\hbar\dfrac{\dd{\Psi(q_i,t)}}{\dd{t}} = \hat H \Psi(q_i,t)$$
+  wobei $\Psi$ von den Ortskoordinaten und der Zeit abhängt. Ausserdem muss eine Anfangsbedingung $\Psi_0$ gegeben sein.
+\end{tcolorbox}
+
+
+## Erhaltungssätze
+TODO
+
+
+\begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
+  title=Postulat 5,fonttitle=\bfseries\sffamily,
+  boxed title style={size=small,colframe=lime!75!black} ]
+  Der Spinfreshimpuls $\vec{S}$ eines abgeschlossenen Systems ist der Anteil des Gesamtdrehimpulses, der nicht auf einen Bahndrehimpuls zurückzuführen ist: $$\hat{\vec{S}} = \hat{\vec{J}} - \hat{\vec{L}}$$
+  Spins kommen in der relativistischen Formulierung der Quantenmechanik vor. Die Existenz des Spins muss aber im Rahmen einer nicht-relativistischen Theorie postuliert werden.
+\end{tcolorbox}
+
 
 
 <!-- \newtcolorbox{postulat}[1] {
