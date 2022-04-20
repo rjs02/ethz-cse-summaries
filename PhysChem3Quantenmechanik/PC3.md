@@ -11,10 +11,10 @@ margin-left:   1.5cm
 margin-right:  1.5cm
 papersize: a4
 pagestyle: empty
-# fontfamily: sans
+fontfamily: sans
 ---
 
-
+\newpage
 # Mathematische Grundlagen
 
 ## Skalarprodukt
@@ -145,7 +145,8 @@ Sei $\qty{\varphi_n}$ eine vollständige, orthonormierte Basis von Eigenfunktion
 
 
 ## Heisenbergsche Unbestimmtheitsrelation
-TODO
+Der Operator $\Delta \hat A = \hat A - \ev{\hat A}$ gibt die Abweichung der Messwerte der Observablen $\hat A$ vom Erwartungswert $\ev{\hat A}$ an. Die Streuung (Dispersion) der Messwerte für ein System mit $\Psi$ als Anfangszustand ist somit gegeben durch $$ \sigma_{A, \Psi}^2 = \ev{\qty(\hat A - \ev{\hat A})^2} = \ev{\hat A^2} - \ev{\hat A}^2 = \qty(\Delta A)^2$$
+Wichtig: Beachte Unterschied zwischen $\Delta\hat A$ und $\Delta A$! $\Delta A = \sqrt{\ev{\hat{A}^2}}$ ist eine Zahl, die als statistische Unbestimmtheit (Streuung) einer Observablen interpretiert werden kann und $\Delta \hat A$ ist ein Operator.
 
 \begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
   colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
@@ -158,8 +159,23 @@ TODO
 
 
 ## Erhaltungssätze
-TODO
+* Erhaltungssätze der klassischen Physik sind (mit Anpassungen) auch in der QM gültig.
+* In der QM gelten die Erhaltugnssätze nur in Bezug auf Erwartungswerte.
+* Hat eine Observable $\hat A$ einen konstanten Erwartungswert (d.h. unabhängig von der Zeitentwicklung des Systems), dann ist sie eine sog. _Erhaltungsgrösse_.
+* Die Zeitabhängigkeit des Erwartungswertes von $\hat A$ ist proportional zum Erwartungswert des Kommutators von $\hat A$ und $\hat H$: $$\dv{t} \ev{\hat A} = \dfrac{i}{\hbar} \ev{\qty[\hat H, \hat A]}$$
+* **$\hat A$ ist eine Erhaltungsgrösse, wenn $\hat A$ mit $\hat H$ kommutiert.**
 
+### Zusammenfassung Erhaltungsgrössen
+Erhaltungsgrössen $\hat A$ $\left(\qty[\hat A, \hat H]\right)$ sind besonders wichtig in der QM, weil
+
+* $\hat A$ und $\hat H$ eine gemeinsame Basis vollständige Basis von Eigenfunktionen haben (Thm. 3 & 4)
+* stationäre Zustände $\varphi_n$ mit $\hat H \varphi_n = E_n \varphi_n$ einen definierten Wert $a_n$ für die physikalische Grösse $\hat A$ haben (Postulat 3)
+* der Erwartungswert $\ev{\hat A}$ bezüglich einer _beliebigen_ Zustandsfunktion $\Psi$ unter der Zeitentwicklung des Systems erhalten bleibt. 
+
+
+### Bahn-, Spin und Gesamtdrehimpuls
+
+Da der freie Raum isotrop ist, muss der Gesamtdrehimpuls $\vec J$ erhalten bleiben. Experimente zeigen, dass in Atomen der Bahndrehimpuls $\vec L$ nicht erhalten bleibt.
 
 \begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
   colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
@@ -169,6 +185,9 @@ TODO
   Spins kommen in der relativistischen Formulierung der Quantenmechanik vor. Die Existenz des Spins muss aber im Rahmen einer nicht-relativistischen Theorie postuliert werden.
 \end{tcolorbox}
 
+### Seperabilität der Schrödinger-Gleichung
+Besteht der Hamilton-Operator $\hat H$ eines abgeschlossenen Systems aus zwei oder mehreren Operatoren ($\hat H_a, \hat H_b$), die sich auf separate Variablenräume auswirken, ist die entsprechende Schrödinger-Gleichung separabel. Es gilt:
+<!-- $$ \hat H \qty(\hat{\vec{p_i}}) $$ -->
 
 
 <!-- \newtcolorbox{postulat}[1] {
