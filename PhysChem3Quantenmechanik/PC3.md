@@ -1,20 +1,24 @@
 ---
-title: Physikalische Chemie III - Molekulare Quantenmechanik
+title: |
+        Physikalische Chemie III \
+        Molekulare Quantenmechanik
 author: Robin Sieber
-date: Frühlingssemester 2022
+date:   Frühlingssemester 2022
 header-includes: |
-    \usepackage{physics}
-    \usepackage[most]{tcolorbox}
+        \usepackage{physics}
+        \usepackage[most]{tcolorbox}
 margin-top:    2cm
 margin-bottom: 2cm
 margin-left:   1.5cm
 margin-right:  1.5cm
-papersize: a4
-pagestyle: empty
-fontfamily: sans
+papersize:     a4
+pagestyle:     empty
+fontfamily:    sans # palatino
 ---
 
+\thispagestyle{empty}
 \newpage
+
 # Mathematische Grundlagen
 
 ## Skalarprodukt
@@ -146,7 +150,9 @@ Sei $\qty{\varphi_n}$ eine vollständige, orthonormierte Basis von Eigenfunktion
 
 ## Heisenbergsche Unbestimmtheitsrelation
 Der Operator $\Delta \hat A = \hat A - \ev{\hat A}$ gibt die Abweichung der Messwerte der Observablen $\hat A$ vom Erwartungswert $\ev{\hat A}$ an. Die Streuung (Dispersion) der Messwerte für ein System mit $\Psi$ als Anfangszustand ist somit gegeben durch $$ \sigma_{A, \Psi}^2 = \ev{\qty(\hat A - \ev{\hat A})^2} = \ev{\hat A^2} - \ev{\hat A}^2 = \qty(\Delta A)^2$$
-Wichtig: Beachte Unterschied zwischen $\Delta\hat A$ und $\Delta A$! $\Delta A = \sqrt{\ev{\hat{A}^2}}$ ist eine Zahl, die als statistische Unbestimmtheit (Streuung) einer Observablen interpretiert werden kann und $\Delta \hat A$ ist ein Operator.
+**Wichtig**: Beachte Unterschied zwischen $\Delta\hat A$ und $\Delta A$! $\Delta A = \sqrt{\ev{\hat{A}^2}}$ ist eine Zahl, die als statistische Unbestimmtheit (Streuung) einer Observablen interpretiert werden kann und $\Delta \hat A$ ist ein Operator.
+
+Die **Heisenbergsche Unbestimmtheitsrelation** ist gegeben durch $$ \Delta A \Delta B \geq \dfrac{1}{2} \qty|\ev{\qty[\hat A, \hat B]}|.$$ 
 
 \begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
   colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
@@ -186,18 +192,46 @@ Da der freie Raum isotrop ist, muss der Gesamtdrehimpuls $\vec J$ erhalten bleib
 \end{tcolorbox}
 
 ### Seperabilität der Schrödinger-Gleichung
-Besteht der Hamilton-Operator $\hat H$ eines abgeschlossenen Systems aus zwei oder mehreren Operatoren ($\hat H_a, \hat H_b$), die sich auf separate Variablenräume auswirken, ist die entsprechende Schrödinger-Gleichung separabel. Es gilt:
+Besteht der Hamilton-Operator $\hat H$ eines abgeschlossenen Systems aus zwei oder mehreren Operatoren ($\hat H_a, \hat H_b$), die sich auf separate Variablenräume auswirken, ist die entsprechende Schrödinger-Gleichung separabel. Es gilt: TODO
 <!-- $$ \hat H \qty(\hat{\vec{p_i}}) $$ -->
 
 
-<!-- \newtcolorbox{postulat}[1] {
-    enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
-  colback=lime!10!white,colframe=lime!75!black,colbacktitle=lime!75!black,
-  title=Postulat #1,fonttitle=\bfseries\sffamily,
-  boxed title style={size=small,colframe=lime!75!black}
-}
 
-\begin{postulat}{23}
-    snags ansgasd lsdf $asdf$
-    $$ \hat H \Psi = E \Psi $$
-\end{postulat} -->
+## Entartung
+Manchmal haben mehrere Lösung der zeitunabhängigen Schrödinger-Gleichung denselben Eigenwert. Man spricht dann von _Entartung_. Dabei gibt der **Entartungsfaktor** $g_i$ an, wie viele Zustände denselben Energieeigenwert $E_i$ haben. 
+
+### Satz über entartete Zustände
+Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operators zum selben Eigenwert $E_1 = E_2 = E$. Eine beliebige Linearkombination von $\varphi_1$ und $\varphi_2$ $$\Psi = c_1 \varphi_1 \pm c_2 \varphi_2$$ ist auch eine Eigenfunktion von $\hat H$ zum selben Eigenwert $E$.
+
+
+# Kapitel 4: Lineare Bewegungen
+
+## Teilchen im eindimensionalen Kasten
+* $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2} + V(x)$ mit Potential $V(x) = \begin{cases} 0 & \text{falls } 0 \leq x \leq L \\ \infty & \text{sonst.} \end{cases}$
+* $E_n = \dfrac{n^2 h^2}{8mL^2}$
+* $\Psi_n = \sqrt{\dfrac{2}{L}} \sin(\dfrac{n\pi x}{L})$
+* Für $n = 0$ existiert keine Lösung
+* Das System hat eine Nullpunktsenergie $E_1 \neq 0$
+* Die Anzahl Knoten (Nullstellen von $\Psi_n$) im Intervall $[0, L]$ ist $n-1$ und wächst mit zunehmender Energie.
+
+## Teilchem im zwei- und dreidimensionalen Kasten
+* $\hat H = -\dfrac{\hbar^2}{2m} \qty(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}) + V(x,y)$ mit Potential $V(x,y) = \begin{cases} 0 & \text{falls } 0 \leq x \leq L_x, 0 \leq y \leq L_y \\ \infty & \text{sonst.} \end{cases}$
+* Schrödinger-Gleichung ist gem. Definitionen separabel und kann mit dem Ansatz $\Psi(x,y) = \Psi_{n_x}(x) \Psi_{n_y}(y)$ gelöst werden.
+* $E = -\dfrac{h^2}{2m} \qty(\dfrac{1}{\Psi_{n_x}(x)}\dfrac{\partial^2}{\partial x^2}\Psi_{n_x}(x) + \dfrac{1}{\Psi_{n_y}(y)}\dfrac{\partial^2}{\partial y^2}\Psi_{n_y}(y))$
+* Das Problem lässt sich also $x$- und $y$-Richtung aufteilen mit 
+  * $\Psi_{n_x}(x) = \sqrt{\dfrac{2}{L_x}} \sin(\dfrac{n_x\pi x}{L_x})$
+  * $\Psi_{n_y}(y) = \sqrt{\dfrac{2}{L_y}} \sin(\dfrac{n_y\pi y}{L_y})$
+* $\Psi_{n_x,n_y}(x,y) = \Psi_{n_x}(x) \Psi_{n_y}(y) = \dfrac{2}{\sqrt{L_x L_y}} \sin(\dfrac{n_x\pi x}{L_x}) \sin(\dfrac{n_y\pi y}{L_y})$
+* $E = E_{n_x} + E_{n_y} = \dfrac{h^2n_x^2}{8mL_x^2} + \dfrac{h^2n_y^2}{8mL_y^2} = \dfrac{h^2}{8m} \qty(\dfrac{n_x^2}{L_x^2}+\dfrac{n_y^2}{L_y^2})$
+* Die Bewegung des Teilchens in $x$- und $y$-Richtung ist unabhängig voneinander, falls der Raum im Kasten homogen ist.
+* **#QZ = #dim**, hier 2: $n_x, n_y$
+* Für $L_x = L_y$ gilt $E_{n_x} = E_{n_y} \rightarrow$ es gibt somit eine entartete Lösung.
+* Die Ergebnisse lassen sich leicht auf drei Dimensionen erweitern:
+  * $E_{n_x,n_y,n_z} = \dfrac{h^2}{8m} \qty(\dfrac{n_x^2}{L_x^2}+\dfrac{n_y^2}{L_y^2}+\dfrac{n_z^2}{L_z^2})$
+  * $\Psi_{n_x,n_y,n_z}(x,y,z) = \Psi_{n_x}(x) \Psi_{n_y}(y) \Psi_{n_z}(z) = \sqrt{\dfrac{8}{L_x L_y L_z}} \sin(\dfrac{n_x\pi x}{L_x}) \sin(\dfrac{n_y\pi y}{L_y}) \sin(\dfrac{n_z\pi z}{L_z})$
+
+## Tunneleffekt
+
+## Schwingung zweiatomiger Moleküle
+
+# Drehimpulse in der Quantenmechanik
