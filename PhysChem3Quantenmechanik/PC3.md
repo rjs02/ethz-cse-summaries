@@ -1,9 +1,13 @@
 ---
 title: |
-        Physikalische Chemie III \
-        Molekulare Quantenmechanik
-author: Robin Sieber
-date:   Frühlingssemester 2022
+        [Physikalische Chemie III \
+        Molekulare Quantenmechanik](https://xuv.ethz.ch/education/pc3.html)
+author: |
+        Robin Sieber \
+        <rosieber@ethz.ch>
+date:   |
+        [ETH Zürich](https://ethz.ch/) \
+        Frühlingssemester 2022
 header-includes: |
         \usepackage{physics}
         \usepackage[most]{tcolorbox}
@@ -14,6 +18,7 @@ margin-right:  1.5cm
 papersize:     a4
 pagestyle:     empty
 fontfamily:    sans # palatino
+# numbersections: true
 ---
 
 \thispagestyle{empty}
@@ -71,7 +76,7 @@ Nicht die ganze QM kann durch dieses Prinzip hergeleitet werden, da es auch rein
   colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
   title=Postulat 1,fonttitle=\bfseries\sffamily,
   boxed title style={size=small,colframe=lime!75!black} ]
-  In der Quantenmechanik wird ein abgeschlossenes System durch seinen Hamilton Operator $\hat H$ vollständig charakterisiert.
+  In der Quantenmechanik wird ein abgeschlossenes System durch seinen Hamilton-Operator $\hat H$ vollständig charakterisiert.
 \end{tcolorbox}
 
 * Den Hamilton Operator erhält man gemäss Korrespondenzprinzip.
@@ -172,7 +177,7 @@ Die **Heisenbergsche Unbestimmtheitsrelation** ist gegeben durch $$ \Delta A \De
 * **$\hat A$ ist eine Erhaltungsgrösse, wenn $\hat A$ mit $\hat H$ kommutiert.**
 
 ### Zusammenfassung Erhaltungsgrössen
-Erhaltungsgrössen $\hat A$ $\left(\qty[\hat A, \hat H]\right)$ sind besonders wichtig in der QM, weil
+Erhaltungsgrössen $\hat A$ $\qty(\Leftrightarrow \qty[\hat A, \hat H] = 0)$ sind besonders wichtig in der QM, weil
 
 * $\hat A$ und $\hat H$ eine gemeinsame Basis vollständige Basis von Eigenfunktionen haben (Thm. 3 & 4)
 * stationäre Zustände $\varphi_n$ mit $\hat H \varphi_n = E_n \varphi_n$ einen definierten Wert $a_n$ für die physikalische Grösse $\hat A$ haben (Postulat 3)
@@ -206,7 +211,7 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
 
 # Kapitel 4: Lineare Bewegungen
 
-## Teilchen im eindimensionalen Kasten
+## Teilchen im 1D Kasten
 * $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2} + V(x)$ mit Potential $V(x) = \begin{cases} 0 & \text{falls } 0 \leq x \leq L \\ \infty & \text{sonst.} \end{cases}$
 * $E_n = \dfrac{n^2 h^2}{8mL^2}$
 * $\Psi_n = \sqrt{\dfrac{2}{L}} \sin(\dfrac{n\pi x}{L})$
@@ -214,7 +219,7 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
 * Das System hat eine Nullpunktsenergie $E_1 \neq 0$
 * Die Anzahl Knoten (Nullstellen von $\Psi_n$) im Intervall $[0, L]$ ist $n-1$ und wächst mit zunehmender Energie.
 
-## Teilchem im zwei- und dreidimensionalen Kasten
+## Teilchem im 2D/3D Kasten
 * $\hat H = -\dfrac{\hbar^2}{2m} \qty(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}) + V(x,y)$ mit Potential $V(x,y) = \begin{cases} 0 & \text{falls } 0 \leq x \leq L_x, 0 \leq y \leq L_y \\ \infty & \text{sonst.} \end{cases}$
 * Schrödinger-Gleichung ist gem. Definitionen separabel und kann mit dem Ansatz $\Psi(x,y) = \Psi_{n_x}(x) \Psi_{n_y}(y)$ gelöst werden.
 * $E = -\dfrac{h^2}{2m} \qty(\dfrac{1}{\Psi_{n_x}(x)}\dfrac{\partial^2}{\partial x^2}\Psi_{n_x}(x) + \dfrac{1}{\Psi_{n_y}(y)}\dfrac{\partial^2}{\partial y^2}\Psi_{n_y}(y))$
@@ -231,7 +236,35 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
   * $\Psi_{n_x,n_y,n_z}(x,y,z) = \Psi_{n_x}(x) \Psi_{n_y}(y) \Psi_{n_z}(z) = \sqrt{\dfrac{8}{L_x L_y L_z}} \sin(\dfrac{n_x\pi x}{L_x}) \sin(\dfrac{n_y\pi y}{L_y}) \sin(\dfrac{n_z\pi z}{L_z})$
 
 ## Tunneleffekt
+Betrachte ein Teilchen mit einem Potential $V$, das eine rechtwinklige Barriere aufweist: $V(x) = \begin{cases} 0 & \text{für } x < 0 \\ V & \text{für } 0 \leq x \leq D \\ 0 & \text{für } x > D \end{cases}$ 
+
+![Potential mit endlicher Barriere](img/tunnel_potential.png){width=25%} 
+
+Die Schrödinger-Gleichung für das System lautet: $\hat H \Psi(x) = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2}\Psi + V(x)\Psi$.
+
+**Fall 1**: $D \rightarrow \infty$ (Potentialstufe):
+
+Die Wellenfunktion im Bereich $B$ ist $\Psi_B(x) = A' e^{-\kappa x}$ und die Wahrscheinlichkeitsdichte $\Psi_B^* \Psi_B \dd{x} = A'^2 e^{-2\kappa x}\dd{x}$. Die Wahrscheinlichkeit, das Teilchen im Bereich $B$ vorzufinden nimmt mit zunehmenden $x$ exponentiell ab, es existiert aber trotzdem eine endliche Wahrscheinlichkeit, das Teilchen im klassisch verbotenen Bereich $B$ vorzufinden.
+
+**Fall 2**: $D < \infty$ (Barriere mit endlicher Breite):
+
+TODO
+
+**Zusammenfassung**: Die Tunnelwahrscheinlichkeit wird demnach klein für
+
+* breite Barrieren ($D \to \infty$)
+* hohe Barrieren ($V \to \infty$)
+* grosse Massen $m$ ($\to$ Grenzfall zu kl. Phyisk)
+
+## Harmonischer Oszillator
+  * $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2} + \dfrac{1}{2}kx^2 = -\dfrac{\hbar^2}{2m} \qty[\dfrac{\dd^2}{\dd{x}^2} - \alpha^2 x^2]$ mit $\alpha = \sqrt{\dfrac{mk}{\hbar^2}} = \dfrac{\omega m}{\hbar}$
+  * $\Psi(x) = A \exp(-\frac{\alpha x^2}{2}) \underbrace{\sum_{l=0}^\infty c_{2l} x^{2l}}_\text{gerade Fkt.} + B \exp(-\frac{\alpha x^2}{2}) \underbrace{\sum_{l=0}^\infty c_{2l+1} x^{2l+1}}_\text{ungerade Fkt.}$
+  * Da der harmonische Oszillator eine Inversionssymmetrie um $x=0$ aufweist, vertauscht der Hamilton-Operator mit dem Paritätsoperator.
+  * $\Psi_v(x) = (\alpha / \pi)^{1/4} (2^v v!)^{-1/2} H_v(\sqrt{\alpha}x)e^{-\alpha x^2/2}$ 
+  * $E_v = h\nu \qty(v + \frac{1}{2})$
+  * TODO
+
 
 ## Schwingung zweiatomiger Moleküle
 
-# Drehimpulse in der Quantenmechanik
+# Kapitel 5: Drehimpulse in der Quantenmechanik
