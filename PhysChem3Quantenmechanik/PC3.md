@@ -268,3 +268,35 @@ TODO
 ## Schwingung zweiatomiger Moleküle
 
 # Kapitel 5: Drehimpulse in der Quantenmechanik
+## Der Bahndrehimpuls
+Klassisch ist der Bahndrehimpuls eines Teilchens mit Ortsvektor $\vec{r} = (x,y,z)$ und Impulsvektor $\vec{p} = (p_x, p_y, p_z)$ definiert als $\vec{l} = \vec{r} \times \vec{p}$. Gemäss dem Korrespondenzprinzip ist also $$ \hat \vec{l} = \qty(i\hbar \qty(z\pdv{y} - y\pdv{z}), i\hbar \qty(x\pdv{z} - z\pdv{x}), i\hbar \qty(y\pdv{x} - x\pdv{y})) = \qty(\hat l_x, \hat l_y, \hat l_z)$$
+
+Ausserdem gilt $\hat l^2 = \hat l_x^2 + \hat l_y^2 + \hat l_z^2$.
+
+Die folgenden Vertauschungsrelationen gelten:
+
+* $\qty[\hat l_x, \hat l_y] = i\hbar \hat l_z$
+* $\qty[\hat l_y, \hat l_z] = i\hbar \hat l_x$
+* $\qty[\hat l_z, \hat l_x] = i\hbar \hat l_y$
+* $\qty[\hat l^2, \hat l_x] = \qty[\hat l^2, \hat l_y] = \qty[\hat l^2, \hat l_z] = 0$
+
+Daraus folgt:
+
+* Es ist unmöglich, mehr als eine Komponente des Bahndrehimpulsvektors eines Teilchens gleichzeitig exakt zu bestimmen. Es besteht die Unbestimmtheitsrelation $$ \Delta l_x \Delta l_y \geq \frac{1}{2} \qty|\ev{\qty[\hat l_x, \hat l_y]}| = \frac{1}{2} \hbar \qty|\ev{\hat l_z}|.$$
+* Der Betrag des Drehimpulsvektors $|\hat\vec l|$ und eine Komponente (z.B. $\hat l_z$) können gleichzeitig genau bestimmt werden.
+* Die Operatoren $\hat l^2$ und $\hat l_z$ besitzen eine gemeinsame Basis von Eigenvektoren.
+
+### Drehimpuls in Polarkoordinaten 
+**TODO**
+
+### Lösen der Eigenwertgleichungen
+Mit dem Ansatz $Y(\theta, \phi) = S(\theta) T(\phi)$ erhalten wir **TODO**
+
+## Allgemeine Drehimpulse
+Sei $\hat\vec J = (\hat J_x, \hat J_y, \hat J_z)$ ein allgemeiner Drehimpuls definiert durch die Vertauschungsrelationen
+
+* $\qty[\hat J_x, \hat J_y] = i\hbar \hat J_z$ (zyklische Vertauschung)
+* $\qty[\hat J^2, \hat J_x] = \qty[\hat J^2, \hat J_y] = \qty[\hat J^2, \hat J_z] = 0$.
+
+Ein eleganter Weg, die Eigenwertgleichungen zu lösen, wird durch das Definieren der Drehimpuls-_Leiteroperatoren_ $\hat J_\pm$ ermöglicht: $$ \hat J_+ = \hat J_x + i\hat J_y,\hspace{2cm} \hat J_- = \hat J_x - i\hat J_y.$$
+Für die Produkt gilt $$\hat J_+ \hat J_- = \hat J^2 - \hat J_z^2 + \hbar \hat J_z \hspace{2cm} \hat J_- \hat J_+ = \hat J^2 - \hat J_z^2 - \hbar \hat J_z$$ und für die Kommutatoren $$\qty[\hat J_+, \hat J_-] = -\hbar \hat J_+ \hspace{2cm} \qty[\hat J_-, \hat J_+] = \hbar \hat J_-$$.
