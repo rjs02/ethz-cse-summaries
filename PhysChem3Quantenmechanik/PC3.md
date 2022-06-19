@@ -1,20 +1,18 @@
 ---
 title: |
-        [Physikalische Chemie III \
-        Molekulare Quantenmechanik](https://xuv.ethz.ch/education/pc3.html)
+        [Physikalische Chemie III - Molekulare Quantenmechanik](https://xuv.ethz.ch/education/pc3.html)
 author: |
-        Robin Sieber \
-        <rosieber@ethz.ch>
-date:   |
-        [ETH Zürich](https://ethz.ch/) \
-        Frühlingssemester 2022
+        [Robin Sieber](mailto:rosieber@ethz.ch) | [ETH Zürich](https://ethz.ch/) | Frühlingssemester 2022
 header-includes: |
         \usepackage{physics}
         \usepackage[most]{tcolorbox}
-margin-top:    2cm
-margin-bottom: 2cm
-margin-left:   1.5cm
-margin-right:  1.5cm
+geometry:
+- top=0.8cm
+- bottom=0.8cm
+- left=0.5cm
+- right=0.5cm
+- landscape
+classoption: twocolumn
 papersize:     a4
 pagestyle:     empty
 fontfamily:    sans # palatino
@@ -22,7 +20,7 @@ fontfamily:    sans # palatino
 ---
 
 \thispagestyle{empty}
-\newpage
+<!-- \newpage -->
 
 # Mathematische Grundlagen
 
