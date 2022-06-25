@@ -22,7 +22,7 @@ fontfamily:    sans # palatino
 <!-- atomic term symbol -->
 \newcommand{\ts}[3]{^{#1}\text{#2}_{#3}}
 
-\thispagestyle{empty}
+<!-- \thispagestyle{empty} -->
 <!-- \newpage -->
 
 # Mathematische Grundlagen
@@ -36,7 +36,7 @@ fontfamily:    sans # palatino
 
 ## Operatoren
 * Ein Operator $\hat A$ ist eine Rechenvorschrift (Ableitung, Multiplikation etc.), die auf eine Funktion wirkt.
-* Der _Kommutator_ zweier Operatoren ist folgendermassen definiert: $$\qty[\hat A, \hat B] = \hat A \hat B - \hat B \hat A$$
+* Der _Kommutator_ zweier Operatoren ist folgendermassen definiert: $$\qty[\hat A, \hat B] = \hat A \hat B - \hat B \hat A = - \qty[\hat B, \hat A]$$
 * Für Kommutatoren gelten folgende Rechenregeln:
     * $\qty[\hat A \hat B, \hat C] = \hat A\qty[\hat B, \hat C] + \qty[\hat A, \hat C] \hat B$
     * $\qty[\hat A, \hat B \hat C] =  \qty[\hat A, \hat B] \hat C + \hat B\qty[\hat A, \hat C]$
@@ -193,12 +193,12 @@ Da der freie Raum isotrop ist, muss der Gesamtdrehimpuls $\vec J$ erhalten bleib
   colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
   title=Postulat 5,fonttitle=\bfseries\sffamily,
   boxed title style={size=small,colframe=lime!75!black} ]
-  Der Spinfreshimpuls $\vec{S}$ eines abgeschlossenen Systems ist der Anteil des Gesamtdrehimpulses, der nicht auf einen Bahndrehimpuls zurückzuführen ist: $$\hat{\vec{S}} = \hat{\vec{J}} - \hat{\vec{L}}$$
+  Der Spindrehimpuls $\vec{S}$ eines abgeschlossenen Systems ist der Anteil des Gesamtdrehimpulses, der nicht auf einen Bahndrehimpuls zurückzuführen ist: $$\hat{\vec{S}} = \hat{\vec{J}} - \hat{\vec{L}}$$
   Spins kommen in der relativistischen Formulierung der Quantenmechanik vor. Die Existenz des Spins muss aber im Rahmen einer nicht-relativistischen Theorie postuliert werden.
 \end{tcolorbox}
 
 ### Seperabilität der Schrödinger-Gleichung
-Besteht der Hamilton-Operator $\hat H$ eines abgeschlossenen Systems aus zwei oder mehreren Operatoren ($\hat H_a, \hat H_b$), die sich auf separate Variablenräume auswirken, ist die entsprechende Schrödinger-Gleichung separabel. Es gilt: TODO
+Besteht der Hamilton-Operator $\hat H$ eines abgeschlossenen Systems aus zwei oder mehreren Operatoren ($\hat H_a, \hat H_b$), die sich auf separate Variablenräume auswirken, ist die entsprechende Schrödinger-Gleichung separabel. Es gilt: **TODO**
 <!-- $$ \hat H \qty(\hat{\vec{p_i}}) $$ -->
 
 
@@ -249,13 +249,13 @@ Die Wellenfunktion im Bereich $B$ ist $\Psi_B(x) = A' e^{-\kappa x}$ und die Wah
 
 **Fall 2**: $D < \infty$ (Barriere mit endlicher Breite):
 
-TODO
+**TODO**
 
 **Zusammenfassung**: Die Tunnelwahrscheinlichkeit wird demnach klein für
 
 * breite Barrieren ($D \to \infty$)
 * hohe Barrieren ($V \to \infty$)
-* grosse Massen $m$ ($\to$ Grenzfall zu kl. Phyisk)
+* grosse Massen $m$ ($\to$ Grenzfall zu kl. Physik)
 
 ## Harmonischer Oszillator
   * $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2} + \dfrac{1}{2}kx^2 = -\dfrac{\hbar^2}{2m} \qty[\dfrac{\dd^2}{\dd{x}^2} - \alpha^2 x^2]$ mit $\alpha = \sqrt{\dfrac{mk}{\hbar^2}} = \dfrac{\omega m}{\hbar}$
@@ -263,7 +263,7 @@ TODO
   * Da der harmonische Oszillator eine Inversionssymmetrie um $x=0$ aufweist, vertauscht der Hamilton-Operator mit dem Paritätsoperator.
   * $\Psi_v(x) = (\alpha / \pi)^{1/4} (2^v v!)^{-1/2} H_v(\sqrt{\alpha}x)e^{-\alpha x^2/2}$ 
   * $E_v = h\nu \qty(v + \frac{1}{2})$
-  * TODO
+  * **TODO**
 
 
 ## Schwingung zweiatomiger Moleküle
