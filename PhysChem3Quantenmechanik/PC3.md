@@ -19,6 +19,9 @@ fontfamily:    sans # palatino
 # numbersections: true
 ---
 
+<!-- atomic term symbol -->
+\newcommand{\ts}[3]{^{#1}\text{#2}_{#3}}
+
 \thispagestyle{empty}
 <!-- \newpage -->
 
@@ -298,3 +301,52 @@ Sei $\hat\vec J = (\hat J_x, \hat J_y, \hat J_z)$ ein allgemeiner Drehimpuls def
 
 Ein eleganter Weg, die Eigenwertgleichungen zu lösen, wird durch das Definieren der Drehimpuls-_Leiteroperatoren_ $\hat J_\pm$ ermöglicht: $$ \hat J_+ = \hat J_x + i\hat J_y,\hspace{2cm} \hat J_- = \hat J_x - i\hat J_y.$$
 Für die Produkt gilt $$\hat J_+ \hat J_- = \hat J^2 - \hat J_z^2 + \hbar \hat J_z \hspace{2cm} \hat J_- \hat J_+ = \hat J^2 - \hat J_z^2 - \hbar \hat J_z$$ und für die Kommutatoren $$\qty[\hat J_+, \hat J_-] = -\hbar \hat J_+ \hspace{2cm} \qty[\hat J_-, \hat J_+] = \hbar \hat J_-$$.
+
+
+
+# Kapitel 6: Atome
+## Das Wasserstoffatom
+* Hamilton-Operator für ein Einelektronenatom mit Kernladung $+Ze$ und Masse $m_K$: $$\hat H = - \dfrac{\hbar^2}{2m_K}\Delta_K - \dfrac{\hbar^2}{2m_e}\Delta_e - \dfrac{Ze^2}{4\pi\epsilon_0 r} + \text{andere Terme}$$ wobei "andere Terme" für bspw. die Spin-Bahn-Kopplung oder Hyperfein-WW stehen.
+* Die Lösung hat die (orthonormale) Form $$\Psi_{n,l,m_l}(r,\theta,\phi) = R_{n,l}(r) Y_{l,m_l}(\theta,\phi)$$ $$E_n = -\dfrac{hcRZ^2}{n^2} \ \text{mit } R = R_\infty \dfrac{\mu}{m_e}$$
+* Hauptquantenzahl $n = 1,2,3 \dots$, Bahndrehimpulsquantenzahl $l = 0,1,\dots,n-1$ und magnetische Quantenzahl $m_l = -l,\dots,l$
+* Energien $E_n$ sind in $l$ und $m_l$ entartet mit Entartungsfaktor $g_n = n^2$
+* #Knotenflächen ($\Psi_{n,l,m_l}(\theta,\phi) = 0$) ist $n-1$, davon $n-l-1$ Knotenpunkte in $R_{n,l}$ und $l$ in $Y_{l,m_l}$
+* Siehe Anhang D im Skript für die explizite Formen Funktionen von $R_{n,l}$ und $Y_{l,m_l}$
+* Wahrscheinlichkeit, ein Elektron im Zustand $\Psi_{n,l,m_l}$ in einem Abstand $r$ vom Kern zu finden, ist $$p_{n,l}(r)\dd{r} = \qty|R_{n,l}|^2 r^2 \dd{r}$$
+
+## Alkalimetallatome
+* Können ähnlich behandelt werden, weil sie nur ein Valenzelektron besitzen. Die Stärke der Abschirmung ist von $n$ *und* $l$ abhängig, was zur Aufhebung der Entartung in $l$ führt. Mit dem Quantendefekt $\delta_l$ und der Ionisierungsenergie $E_i$ des Atoms erhält man die **Rydberg-Formel** $$E_{n,l} = E_i - \dfrac{hcR}{(n-\delta_l)^2}$$
+
+## Mehrelektronenatome und Pauli-Prinzip
+* **Verallgemeinertes Pauli-Prinzip**: Wellenfunktion ist bei Vertauschung von identischen Fermionen ($s \in (2\mathbb{N}+1)/2$; Elektron, Proton, Neutron etc.) antisymmetrisch bzw. symmetrisch bei Bosonen ($s \in \mathbb{N}$; manche Kerne).
+* Konstruktion einer *antisymmetrischen* Funktion: $\Psi(\va{r_1},\va{r_2}) = \frac{1}{\sqrt{2}}(\psi(\va{r_1}, \va{r_2}) - \psi(\va{r_2},\va{r_1}))$
+* Konstruktion einer *symmetrischen* Funktion: $\Psi(\va{r_1},\va{r_2}) = \frac{1}{\sqrt{2}}(\psi(\va{r_1}, \va{r_2}) + \psi(\va{r_2},\va{r_1}))$
+* Notation: $\ket{nlm_s}$ mit $m_s = 1/2 = \alpha$ und $m_s = -1/2 = \beta$.
+* Beispiel: Helium im Grundzustand (1s)$^\text{2}$ ($n=1, l=0=\text{s}$, $s=1/2$): Die Energieeigenfunktionen von Helium sind von der Form $\ket{1si(1)}\ket{1sj(2)}$ mit $i,j=\alpha,\beta$, wobei $(1),(2)$ das jeweilige Elektron bezeichnet. Der Zustand $\alpha\beta$ lässt sich nun schreiben als: $$ \frac{1}{\sqrt{2}} (\ket{1s\alpha(1)}\ket{1s\beta(2)} - \ket{1s\alpha(2)}\ket{1s\beta(1)}) $$
+* Bemerke, dass die Kets kommutieren und daher ein $\alpha\alpha$-Zustand 0 ergibt. Daraus folgt das Pauli-Aussschlussprinzip.
+* **Pauli-Ausschlussprinzip**: Zwei Elektronen dürfen nicht in allen Quantenzahlen übereinstimmen.
+* Antisymmetrische Funktionen können auch mit **Slater-Determinanten** geschrieben werden: 
+  \begin{align*} 
+    \Psi((1),(2), \dots) = \dfrac{1}{\sqrt{n}} \begin{vmatrix} \psi_1(1) & \psi_2(1) & \dots & \psi_n(1) \\ \psi_1(2) & \psi_2(2) & \dots & \psi_n(2) \\ \vdots & \vdots & \ddots & \vdots \\ \psi_1(n) & \psi_2(n) & \dots & \psi_n(n) \end{vmatrix}
+  \end{align*}
+* **Aufbauprinzip**: Den Grundzustand eines Mehrelektronensystems erhält man durch Auffüllen der Einelektronenzustände mit steigender Energie, wobei pro Zustand zwei Elektronen mit entgegengesetztem Spin erlaubt sind: 1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p. Allgemein gelten die folgenden empirischen Regeln:
+  * $E(n,l) < E(n',l')$, falls $(n+l) < (n'+l')$
+  * $E(n,l) < E(n',l')$, falls $(n+l) = (n'+l')$ und $n < n'$
+
+## Konfigurationen, Terme und Termkomponenten
+* **LS-Kopplung**: Für leichte Atome, weil Spin-Bahnkopplung < Coulomb-WW
+  1. Ermittle Elektronenkonfiguration.
+  2. Alle vollbesetzten Schalen weglassen. Falls nur vollbesetzte Schalen vorhanden sind, erhalten wir direkt den einzig möglichen Term: $\ts{1}{S}{0}$.
+  3. Alle gemäss Pauli-Prinzip erlaubten Zustände auflisten und zugehörige Werte $M_S = \sum_i m_{s,i}$ und $M_L = \sum_i m_{l,i}$ notieren.
+  4. Mit grösstem $(M_L,M_S)$-Paar beginnen. Dieses deutet auf einen Zustand mit $L=M_L$ und $S=M_S$ hin $\Rightarrow$ entsprechenden Term $\ts{2S+1}{L}{J_i}$ notieren, wobei $J_i = L+S, L+S-1, \dots, |L-S|$. Für L $=0,1,3,4,\dots$ schreibt man S, P, D, F, G,...
+  5. Nun müssen alle zu diesen Termen gehörenden Paare $(M_L',M_S')$, gegeben durch $M_L' = L,L-1,\dots,-L$ und $M_S'=S,S-1,\dots,-S$ aus der Liste gestrichen werden.
+  6. Wiederhole Schritte 4 und 5, bis alle $(M_L,M_S)$-Paare aus der Liste gestrichen sind.
+* Nach der Bestimmung aller möglichen Terme muss der *Grundzustandsterm* gefunden werden. Dazu müssen die **Hundschen Regeln** befolgt werden:
+  1. Maximiere $S$
+  2. Maximiere $L$
+  3. Maximiere $J$, falls Schale mehr als halbvoll, sonst minimieren.
+* **Trick**: Bei mehr als halbvollen Schalen, können statt den vorhandenen Elektronen auch die fehlenden ("Löcher") betrachtet werden. Die folgenden Konfigurationen haben dieselben möglichen Termsymbole: (2p)$^\text{5} \Leftrightarrow$ (2p)$^\text{1}$, (3d)$^\text{9} \Leftrightarrow$ (3d)$^\text{1}$, (3d)$^\text{8} \Leftrightarrow$ (3d)$^\text{2}$ etc. *Die Bestimmung des Grundzustands kann dabei wegen der 3. Hundschen Regel zu einem anderen Ergebnis führen!*
+
+* **jj-Kopplung**: Für schwere Atome.
+  1. Gesamtdrehimpulse der einzelnen Elektronen bestimmen: $j_i = |l_i \pm 1/2|$.
+  2. Terme als $(j_1,j_2)_{J_i}$ notieren, wobei $J_i = j_1 + j_2, j_1 + j_2 - 1, \dots, |j_1 - j_2|$ die möglichen Gesamtdrehimpulse des Systems sind.
