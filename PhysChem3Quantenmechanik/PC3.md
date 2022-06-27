@@ -2,7 +2,7 @@
 title: |
         [Physikalische Chemie III - Molekulare Quantenmechanik](https://xuv.ethz.ch/education/pc3.html)
 author: |
-        [Robin Sieber](mailto:rosieber@ethz.ch) | [ETH Zürich](https://ethz.ch/) | Frühlingssemester 2022
+        [Robin Sieber](mailto:rosieber@ethz.ch) | RW/CSE | [ETH Zürich](https://ethz.ch/) | Frühlingssemester 2022
 header-includes: |
         \usepackage{physics}
         \usepackage[most]{tcolorbox}
@@ -48,7 +48,12 @@ fontfamily:    sans # palatino
 * $A$ ist _selbstadjungiert_, wenn $\qty(A^\dagger)_{ij} = \qty(A)^*_{ji}$ gilt.
 
 # Kapitel 1
-nichts
+* Stefan: $U \propto T^4, M \propto \sigma T^4$
+* Wien: $\lambda_\text{max} = 0.201 hc/kT$
+* Rayleigh-Jeans: $\dd{U(\nu)} = \frac{8\pi h \nu^3}{c^3}\dd{\nu} \Rightarrow U_\text{tot} = \infty$
+* Planck: $\dd{U(\nu)} = \frac{8\pi h \nu^3}{c^3}\qty(\frac{\exp(-h\nu/kT)}{1-\exp(-h\nu/kT)}) \dd{\nu} \Rightarrow U_\text{tot} < \infty$
+* De-Broglie: $\Psi(\vec r, t) = \Psi_0 \exp(i(\vec k \cdot \vec r - \omega t)) = \Psi_0 \exp(\frac{i}{\hbar}(\vec p \cdot \vec r - Et)),\lambda_i = h/p_i, i=x,y,z$
+
 
 # Kapitel 2: Schrödinger-Gleichung
 In der Quantenmechanik werden messbare physikalische Grössen als Obsverablen bezeichnet und durch Operatoren oder Matrizen dargestellt. 
@@ -286,6 +291,8 @@ Daraus folgt:
 * Es ist unmöglich, mehr als eine Komponente des Bahndrehimpulsvektors eines Teilchens gleichzeitig exakt zu bestimmen. Es besteht die Unbestimmtheitsrelation $$ \Delta l_x \Delta l_y \geq \frac{1}{2} \qty|\ev{\qty[\hat l_x, \hat l_y]}| = \frac{1}{2} \hbar \qty|\ev{\hat l_z}|.$$
 * Der Betrag des Drehimpulsvektors $|\hat\vec l|$ und eine Komponente (z.B. $\hat l_z$) können gleichzeitig genau bestimmt werden.
 * Die Operatoren $\hat l^2$ und $\hat l_z$ besitzen eine gemeinsame Basis von Eigenvektoren.
+* Diese Basis besteht aus den Kugelflächenfunktionen $Y_{l,m_l}(\theta,\phi) = \ket{l,m_l}$. Es gilt die Orthonormalität $\ip{l',m_l'}{l,m_l} = \delta_{l',l} \delta_{m_l',m_l}$ und die folgenden Eigenwertgleichungen: $$ \hat l_z \ket{l,m_l} = \hbar m_l \ket{l,m_l}, \hspace{1cm} \hat l^2 \ket{l,m_l} = \hbar^2 l(l+1) \ket{l,m_l}$$
+* Damit gilt $|\vec{l}| = \hbar \sqrt{l(l+1)}$ und $l_z = \hbar m_l$ mit $|\vec{l}| > l_z$.
 
 ### Drehimpuls in Polarkoordinaten 
 **TODO**
@@ -294,15 +301,63 @@ Daraus folgt:
 Mit dem Ansatz $Y(\theta, \phi) = S(\theta) T(\phi)$ erhalten wir **TODO**
 
 ## Allgemeine Drehimpulse
-Sei $\hat\vec J = (\hat J_x, \hat J_y, \hat J_z)$ ein allgemeiner Drehimpuls definiert durch die Vertauschungsrelationen
+Sei $\hat{\vec{J}} = (\hat J_x, \hat J_y, \hat J_z)$ ein allgemeiner Drehimpuls definiert durch die Vertauschungsrelationen
 
 * $\qty[\hat J_x, \hat J_y] = i\hbar \hat J_z$ (zyklische Vertauschung)
 * $\qty[\hat J^2, \hat J_x] = \qty[\hat J^2, \hat J_y] = \qty[\hat J^2, \hat J_z] = 0$.
 
-Ein eleganter Weg, die Eigenwertgleichungen zu lösen, wird durch das Definieren der Drehimpuls-_Leiteroperatoren_ $\hat J_\pm$ ermöglicht: $$ \hat J_+ = \hat J_x + i\hat J_y,\hspace{2cm} \hat J_- = \hat J_x - i\hat J_y.$$
-Für die Produkt gilt $$\hat J_+ \hat J_- = \hat J^2 - \hat J_z^2 + \hbar \hat J_z \hspace{2cm} \hat J_- \hat J_+ = \hat J^2 - \hat J_z^2 - \hbar \hat J_z$$ und für die Kommutatoren $$\qty[\hat J_+, \hat J_-] = -\hbar \hat J_+ \hspace{2cm} \qty[\hat J_-, \hat J_+] = \hbar \hat J_-$$.
+Ein eleganter Weg, die Eigenwertgleichungen zu lösen, wird durch das Definieren der Drehimpuls-**Leiteroperatoren** $\hat J_\pm$ ermöglicht: \begin{align*}\hat J_\pm &= \hat J_x \pm i\hat J_y & \hat J_x &= \dfrac{\hat J_+ + \hat J_-}{2}, & \hat J_y &= \dfrac{\hat J_+ - \hat J_-}{2i}.\end{align*}
+Für die Produkte gilt \begin{align*}\hat J_+ \hat J_- &= \hat J^2 - \hat J_z^2 + \hbar \hat J_z & \hat J_- \hat J_+ &= \hat J^2 - \hat J_z^2 - \hbar \hat J_z\end{align*} und für die Kommutatoren \begin{align*}\qty[\hat J_+, \hat J_-] &= -\hbar \hat J_+ & \qty[\hat J_-, \hat J_+] &= \hbar \hat J_-.\end{align*}
+Diese erfüllen die Beziehungen: \begin{align*}\hat J_+ \ket{l,m} &= \hbar \sqrt{l(l+1)-m(m+1)} \ket{l,m+1}, & \hat J_- \ket{l,m} &= \hbar \sqrt{l(l+1)-m(m-1)} \ket{l,m-1} \end{align*}
+Diese Operatoren gelten für alle verschiedenen Drehimpulsarten, inkl. Spins. Ausserdem gilt: $\hat J_+ \ket{l,l} = 0$ und $\hat J_- \ket{l,-l} = 0$.
+
+## Matrixdarstellung von Drehimpulsoperatoren
+
+## Rotation starrer Moleküle
+* Körperfestes Koordinatensystem $(x,y,z)$ und raumfestes Laborsystem $(X,Y,Z)$
+* Die Rotationsenergie im (körperfesten) Hauptachsensystem führt zum Hamilton-Operator: $E_\text{rot} = \frac{J_x^2}{2I_x} + \frac{J_y^2}{2I_y} + \frac{J_z^2}{2I_z} \ \Rightarrow \ \hat H_\text{rot} = \frac{\hat J_x^2}{2I_x} + \frac{\hat J_y^2}{2I_y} + \frac{\hat J_z^2}{2I_z}$
+* 3 Rotationsfreiheitsgrade führen zu drei Quantenzahlen $J, M, K$ in den Eigenwertgleichungen: \begin{align*}\hat J^2 \Psi_\text{rot} &= \hbar^2 J(J+1)\Psi_\text{rot}, & \hat J_z \Psi_\text{rot} &= \hbar K \Psi_\text{rot}, & \hat J_Z \Psi_\text{rot} &= \hbar M \Psi_\text{rot}\end{align*}
+* Rotationsdrehimpulsquantenzahl $J = 0,1,2,\dots$, Quantenzahl für Projektion auf die körperfeste $z$-Achse $K = 0, \pm 1, \dots,\pm J$ und Quantenzahl für Projektion auf die raumfeste $Z$-Achse $M = 0, \pm 1, \dots,\pm J$
+* Dies führt zur Eigenfunktion $\Psi_\text{rot} = \ket{J,K,M}$
+* **Achtung**: Im körperfesten System gibt es andere Kommutatoren, weil die Rotation entgegengesetzt erfolgt: $\qty[\hat J_x, \hat J_y] = -i\hbar \hat J_z$ (zyklisch).
+* Die entsprechenden Leiteroperatoren des körperfesten Systems wirken deshalb auch umgekehrt (hoch- statt tiefgestellt zur Unterscheidung). Wirkt auf $K$, weil Projektion auf körperfeste Achse: $$\hat J^\pm \ket{J,K,M} = \hbar \sqrt{J(J+1)-K(\mp 1)} \ket{J,K\mp 1,M}$$
+* In der Spektroskopie werden die Konstanten \begin{align*} \tilde A &= \dfrac{\hbar}{4\pi c I_a}, & \tilde B &= \dfrac{\hbar}{4\pi c I_b}, & \tilde C &= \dfrac{\hbar}{4\pi c I_c} \end{align*} (in cm$^{-1})$ verwendet mit Trägheitsmomenten $I_a \leq I_b \leq I_c$, so dass $\tilde A \geq \tilde B \geq \tilde C$.
+* Verschiedene Arten von Kreisel
+  * Spährischer Kreisel
+  * Prolater Kreisel
+  * Oblater Kreisel
+  * Zweiatomige Moleküle
+  * Asymmetrischer Kreisel
+
+## Drehimpulssysteme in Magnetfeldern
+* Klassische Energie einer mag. Moments im Magnetfeld ist $E = -\vec{\mu} \cdot \vec{B}$, wobei $\hat{\vec{\mu}} = \gamma\hat\vec{J}$ proportional zum Drehimpuls ist.
+* Für Kernspin/Elektron wird die Kern- bzw. Elektron-*Zeeman-Wechselwirkung* folgendermassen beschrieben: \begin{align*} \hat H_N &= -\gamma_N (\hat I_x B_x + \hat I_y B_y + \hat I_z B_z) \\ \hat H_e &= -\gamma_l (\hat l_x B_x + \hat l_y B_y + \hat l_z B_z) - \gamma_s (\hat s_x B_x + \hat s_y B_y + \hat s_z B_z) \\ \hat H_{SB} &= a \hat{\vec{l}}\cdot \hat{\vec{s}} = a(\hat l_x \hat s_x + \hat l_y \hat s_y + \hat l_z \hat s_z) \end{align*}
+wobei die letzte Zeile die *Spin-Bahn-Kopplung* für Elektronen beschreibt.
+* **Trick**: Bei SB-Kopplung Gesamtdrehimpuls $\hat{\vec{j}} = \hat{\vec{l}} + \hat{\vec{s}}$ verwenden, damit mit $\hat{\vec{l}}\cdot \hat{\vec{s}} = \frac{1}{2}(\hat j^2 - \hat s^2 - \hat l^2)$ die Operatoren $\hat l_x, \hat s_x, \hat l_y, \hat s_y$ vermieden werden können und die Basis $\{\ket{l,s,j,m_j}\}$ verwendet werden kann.
+
+## Addition von Drehimpulsen
+Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen unterschiedlicher Operatoren
+
+### Ungekoppelte Darstellung
+* Annahme: $\vec{l}$ und $\vec{s}$ wechselwirken nicht
+* $\ket{l,m_l}\ket{s,m_s} = \ket{l,m_l,s,m_s}$
+* $m_l = 0,\dots,\pm l$ und $m_s = 0,\dots,\pm s$
+* $m_j = m_l + m_s$
+\begin{align*} \hat l^2 \ket{l,m_l,s,m_s} &= \hbar^2 l(l+1)\ket{l,m_l,s,m_s}, & \hat l_z \ket{l,m_l,s,m_s} &= \hbar^2 m_l\ket{l,m_l,s,m_s} \\ \hat s^2 \ket{l,m_l,s,m_s} &= \hbar^2 s(s+1)\ket{l,m_l,s,m_s}, & \hat s_z \ket{l,m_l,s,m_s} &= \hbar^2 m_s\ket{l,m_l,s,m_s} \end{align*}
+
+### Gekoppelte Darstellung
+* Annahme: Starke Wechselwirkung zw. $\vec{l}$ und $\vec{s} \Rightarrow$ verwende Gesamtdrehimpuls $\vec{j} = \vec{l} + \vec{s}$.
+* $\ket{l,s,j,m_j}$
+* $j = s+l, s+l-1, \dots, |s-l|$
+* $m_j = 0, \dots,\pm j$
+\begin{align*} \hat l^2 \ket{l,s,j,m_j} &= \hbar^2 l(l+1) \ket{l,s,j,m_j}, & \hat s^2 \ket{l,s,j,m_j} &= \hbar^2 s(s+1) \ket{l,s,j,m_j} \\ \hat j^2 \ket{l,s,j,m_j} &= \hbar^2 j(j+1) \ket{l,s,j,m_j}, & \hat j_z \ket{l,s,j,m_j} &= \hbar m_j \ket{l,s,j,m_j} \end{align*}
 
 
+# Wasserstoffatom im Magnetfeld
+* 1 Proton mit $I=1/2$, 1 Elektron mit $S=1/2$
+* Grundzustand $L=0$ (s-Orbital) $\Rightarrow$ kein Bahndrehimpuls
+* Im Magnetfeld $B = (0,0,B)^\top$ lautet der Hamilton-Operator: $$\hat H = \underbrace{-\gamma_S B \hat S_z - \gamma_H B \hat I_z}_\text{Kern/Elektron-Zeeman-WW} + \underbrace{a\hat{\vec{S}}\cdot\hat{\vec{I}}}_\text{Hyperfein}$$
+* Die Hyperfein-WW verhindert das leichte Finden der Energien, da weder $\ket{I,M_I,S,M_S}$ noch $\ket{I,S,F,M_F}$ Eigenzustände von $\hat H$ sind. Lösung $\rightarrow$ Skript 5-33
 
 # Kapitel 6: Atome
 ## Das Wasserstoffatom
@@ -327,7 +382,7 @@ Für die Produkt gilt $$\hat J_+ \hat J_- = \hat J^2 - \hat J_z^2 + \hbar \hat J
 * **Pauli-Ausschlussprinzip**: Zwei Elektronen dürfen nicht in allen Quantenzahlen übereinstimmen.
 * Antisymmetrische Funktionen können auch mit **Slater-Determinanten** geschrieben werden: 
   \begin{align*} 
-    \Psi((1),(2), \dots) = \dfrac{1}{\sqrt{n}} \begin{vmatrix} \psi_1(1) & \psi_2(1) & \dots & \psi_n(1) \\ \psi_1(2) & \psi_2(2) & \dots & \psi_n(2) \\ \vdots & \vdots & \ddots & \vdots \\ \psi_1(n) & \psi_2(n) & \dots & \psi_n(n) \end{vmatrix}
+    \Psi((1),(2), \dots) = \dfrac{1}{\sqrt{n!}} \begin{vmatrix} \psi_1(1) & \psi_2(1) & \dots & \psi_n(1) \\ \psi_1(2) & \psi_2(2) & \dots & \psi_n(2) \\ \vdots & \vdots & \ddots & \vdots \\ \psi_1(n) & \psi_2(n) & \dots & \psi_n(n) \end{vmatrix}
   \end{align*}
 * **Aufbauprinzip**: Den Grundzustand eines Mehrelektronensystems erhält man durch Auffüllen der Einelektronenzustände mit steigender Energie, wobei pro Zustand zwei Elektronen mit entgegengesetztem Spin erlaubt sind: 1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p. Allgemein gelten die folgenden empirischen Regeln:
   * $E(n,l) < E(n',l')$, falls $(n+l) < (n'+l')$
