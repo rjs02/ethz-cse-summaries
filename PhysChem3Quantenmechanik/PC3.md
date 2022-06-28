@@ -106,7 +106,7 @@ Nicht die ganze QM kann durch dieses Prinzip hergeleitet werden, da es auch rein
   title=Postulat 3,fonttitle=\bfseries\sffamily,
   boxed title style={size=small,colframe=lime!75!black} ]
   Der Erwartungswert $\ev{\hat A}_\Psi$ einer Observablen $\hat A$ für ein System mit normierter Zustandsfunktion $\Psi$ ist gegeben durch $$\ev{\hat A}_\Psi = \int \Psi^* \hat A \Psi \dd{\tau}.$$
-  Wenn $\Psi$ nicht normiert ist, ist der Erwartungswert gegeben durch $$\ev{\hat A}_\Psi = \dfrac{\int \Psi* \hat A \Psi \dd{\tau}}{\int \Psi^* \Psi \dd{\tau}}.$$
+  Wenn $\Psi$ nicht normiert ist, ist der Erwartungswert gegeben durch $$\ev{\hat A}_\Psi = \dfrac{\int \Psi^* \hat A \Psi \dd{\tau}}{\int \Psi^* \Psi \dd{\tau}}.$$
 \end{tcolorbox}
 
 * Der Erwartungswert wird interpretiert als arithmetischer Mittelwert der Messwerte von $\hat A$ an einer grossen Anzahl gleichartiger Systeme mit gleicher Zustandsfunktion $\Psi$.
@@ -334,6 +334,7 @@ Diese Operatoren gelten für alle verschiedenen Drehimpulsarten, inkl. Spins. Au
 * Für Kernspin/Elektron wird die Kern- bzw. Elektron-*Zeeman-Wechselwirkung* folgendermassen beschrieben: \begin{align*} \hat H_N &= -\gamma_N (\hat I_x B_x + \hat I_y B_y + \hat I_z B_z) \\ \hat H_e &= -\gamma_l (\hat l_x B_x + \hat l_y B_y + \hat l_z B_z) - \gamma_s (\hat s_x B_x + \hat s_y B_y + \hat s_z B_z) \\ \hat H_{SB} &= a \hat{\vec{l}}\cdot \hat{\vec{s}} = a(\hat l_x \hat s_x + \hat l_y \hat s_y + \hat l_z \hat s_z) \end{align*}
 wobei die letzte Zeile die *Spin-Bahn-Kopplung* für Elektronen beschreibt.
 * **Trick**: Bei SB-Kopplung Gesamtdrehimpuls $\hat{\vec{j}} = \hat{\vec{l}} + \hat{\vec{s}}$ verwenden, damit mit $\hat{\vec{l}}\cdot \hat{\vec{s}} = \frac{1}{2}(\hat j^2 - \hat s^2 - \hat l^2)$ die Operatoren $\hat l_x, \hat s_x, \hat l_y, \hat s_y$ vermieden werden können und die Basis $\{\ket{l,s,j,m_j}\}$ verwendet werden kann.
+* $\hat{\vec{l}} \cdot \hat{\vec{s}} = \hat{\vec{s}} \cdot \hat{\vec{l}}$, weil $\hat{\vec{l}}$ und $\hat{\vec{s}}$ kommutieren ($\hat{\vec{l}}$ wirkt auf den räumlichen Teil und $\hat{\vec{s}}$ auf den Spinteil der Wellenfunktion).
 
 ## Addition von Drehimpulsen
 Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen unterschiedlicher Operatoren
