@@ -15,7 +15,7 @@ geometry:
 classoption: twocolumn
 papersize:     a4
 pagestyle:     empty
-fontfamily:    sans # palatino
+# fontfamily:    palatino #sans # palatino
 # numbersections: true
 ---
 
@@ -165,6 +165,10 @@ Der Operator $\Delta \hat A = \hat A - \ev{\hat A}$ gibt die Abweichung der Mess
 
 Die **Heisenbergsche Unbestimmtheitsrelation** ist gegeben durch $$ \Delta A \Delta B \geq \dfrac{1}{2} \qty|\ev{\qty[\hat A, \hat B]}|.$$ 
 
+## Variationsprinzip
+Ziel: Grundzustandsenergie abschätzen
+$$ \dfrac{\ev{\Psi}{\hat H}}{\ip{\Psi}} \geq E_1$$
+
 \begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
   colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
   title=Postulat 4,fonttitle=\bfseries\sffamily,
@@ -234,7 +238,7 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
 * Die Anzahl Knoten (Nullstellen von $\Psi_n$) im Intervall $[0, L]$ ist $n-1$ und wächst mit zunehmender Energie.
 
 ## Teilchen im 2D/3D Kasten
-* $\hat H = -\dfrac{\hbar^2}{2m} \qty(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}) + V(x,y)$ mit Potential $V(x,y) = \begin{cases} 0 & \text{falls } 0 \leq x \leq L_x, 0 \leq y \leq L_y \\ \infty & \text{sonst.} \end{cases}$
+* $\hat H = -\dfrac{\hbar^2}{2m} \qty(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}) + V(x,y)$ mit Potential $V(x,y) = \begin{cases} 0 & \text{falls } x \in [0,L_x] \land y \in [0,L_y] \\ \infty & \text{sonst.} \end{cases}$
 * Schrödinger-Gleichung ist gem. Definitionen separabel und kann mit dem Ansatz $\Psi(x,y) = \Psi_{n_x}(x) \Psi_{n_y}(y)$ gelöst werden.
 * $E = -\dfrac{h^2}{2m} \qty(\dfrac{1}{\Psi_{n_x}(x)}\dfrac{\partial^2}{\partial x^2}\Psi_{n_x}(x) + \dfrac{1}{\Psi_{n_y}(y)}\dfrac{\partial^2}{\partial y^2}\Psi_{n_y}(y))$
 * Das Problem lässt sich also $x$- und $y$-Richtung aufteilen mit 
@@ -247,22 +251,23 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
 * Für $L_x = L_y$ gilt $E_{n_x} = E_{n_y} \rightarrow$ es gibt somit eine entartete Lösung.
 * Die Ergebnisse lassen sich leicht auf drei Dimensionen erweitern:
   * $E_{n_x,n_y,n_z} = \dfrac{h^2}{8m} \qty(\dfrac{n_x^2}{L_x^2}+\dfrac{n_y^2}{L_y^2}+\dfrac{n_z^2}{L_z^2})$
-  * $\Psi_{n_x,n_y,n_z}(x,y,z) = \Psi_{n_x}(x) \Psi_{n_y}(y) \Psi_{n_z}(z) = \sqrt{\dfrac{8}{L_x L_y L_z}} \sin(\dfrac{n_x\pi x}{L_x}) \sin(\dfrac{n_y\pi y}{L_y}) \sin(\dfrac{n_z\pi z}{L_z})$
+  * $\begin{aligned}\Psi_{n_x,n_y,n_z}(x,y,z) &= \Psi_{n_x}(x) \Psi_{n_y}(y) \Psi_{n_z}(z) \\ &= \sqrt{\dfrac{8}{L_x L_y L_z}} \sin(\dfrac{n_x\pi x}{L_x}) \sin(\dfrac{n_y\pi y}{L_y}) \sin(\dfrac{n_z\pi z}{L_z})\end{aligned}$
 
 ## Tunneleffekt
-Betrachte ein Teilchen mit einem Potential $V$, das eine rechtwinklige Barriere aufweist: $V(x) = \begin{cases} 0 & \text{für } x < 0 \\ V & \text{für } 0 \leq x \leq D \\ 0 & \text{für } x > D \end{cases}$ 
+Betrachte ein Teilchen mit einem Potential $V$, das eine rechtwinklige Barriere aufweist: $V(x) = \begin{cases} 0 & \text{für } x < 0 \lor x > D \\ V & \text{für } 0 \leq x \leq D \end{cases}$ 
 
 ![Potential mit endlicher Barriere](img/tunnel_potential.png){width=25%} 
 
-Die Schrödinger-Gleichung für das System lautet: $\hat H \Psi(x) = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2}\Psi + V(x)\Psi$.
+Die Schrödinger-Gleichung für das System lautet: $\hat H \Psi(x) = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2}\Psi + V(x)\Psi$. Die allgemeine Lösung für $A,B$ und $C$ lautet: $\Psi(x) = A e^{ikx} + Be^{-ikx}$ mit $k = \sqrt{\dfrac{2m(E-V)}{\hbar^2}} = i\kappa$, wobei wir für den Teil $A$ die Koeffizienten $A,B,k$, für $B$ $A', B', k'$ und für $C$ $A'', B'', k$ nutzen.
 
 **Fall 1**: $D \rightarrow \infty$ (Potentialstufe):
 
-Die Wellenfunktion im Bereich $B$ ist $\Psi_B(x) = A' e^{-\kappa x}$ und die Wahrscheinlichkeitsdichte $\Psi_B^* \Psi_B \dd{x} = A'^2 e^{-2\kappa x}\dd{x}$. Die Wahrscheinlichkeit, das Teilchen im Bereich $B$ vorzufinden nimmt mit zunehmenden $x$ exponentiell ab, es existiert aber trotzdem eine endliche Wahrscheinlichkeit, das Teilchen im klassisch verbotenen Bereich $B$ vorzufinden.
+Die Wellenfunktion im Bereich $B$ muss $B' = 0$ und somit ist $\Psi_B(x) = A' e^{-\kappa x}$ und die Wahrscheinlichkeitsdichte $\Psi_B^* \Psi_B \dd{x} = A'^2 e^{-2\kappa x}\dd{x}$. Die Wahrscheinlichkeit, das Teilchen im Bereich $B$ vorzufinden nimmt mit zunehmenden $x$ exponentiell ab, es existiert aber trotzdem eine endliche Wahrscheinlichkeit, das Teilchen im klassisch verbotenen Bereich $B$ vorzufinden.
 
 **Fall 2**: $D < \infty$ (Barriere mit endlicher Breite):
 
-**TODO**
+Randbedingungen: $\Psi$ und $\dv{\Psi}{x}$ bei $x = 0$ und $x = D$ stetig sein. Es resultiert die Tunnelwahrscheinlichkeit $P_T = (|A''|/|A|)^2 \approx \frac{16E(V-E)}{V^2}e^{-2\kappa D}$
+
 
 **Zusammenfassung**: Die Tunnelwahrscheinlichkeit wird demnach klein für
 
@@ -271,15 +276,23 @@ Die Wellenfunktion im Bereich $B$ ist $\Psi_B(x) = A' e^{-\kappa x}$ und die Wah
 * grosse Massen $m$ ($\to$ Grenzfall zu kl. Physik)
 
 ## Harmonischer Oszillator
-  * $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2} + \dfrac{1}{2}kx^2 = -\dfrac{\hbar^2}{2m} \qty[\dfrac{\dd^2}{\dd{x}^2} - \alpha^2 x^2]$ mit $\alpha = \sqrt{\dfrac{mk}{\hbar^2}} = \dfrac{\omega m}{\hbar}$
+  * $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2} + \dfrac{1}{2}kx^2 = -\dfrac{\hbar^2}{2m} \qty[\dfrac{\dd^2}{\dd{x}^2} - \alpha^2 x^2]$ mit $\alpha = \sqrt{\dfrac{mk}{\hbar^2}} = \dfrac{2\pi \nu m}{\hbar} = \dfrac{\omega m}{\hbar}$
   * $\Psi(x) = A \exp(-\frac{\alpha x^2}{2}) \underbrace{\sum_{l=0}^\infty c_{2l} x^{2l}}_\text{gerade Fkt.} + B \exp(-\frac{\alpha x^2}{2}) \underbrace{\sum_{l=0}^\infty c_{2l+1} x^{2l+1}}_\text{ungerade Fkt.}$
   * Da der harmonische Oszillator eine Inversionssymmetrie um $x=0$ aufweist, vertauscht der Hamilton-Operator mit dem Paritätsoperator.
-  * $\Psi_v(x) = (\alpha / \pi)^{1/4} (2^v v!)^{-1/2} H_v(\sqrt{\alpha}x)e^{-\alpha x^2/2}$ 
+  * $\Psi_v(x) = (\alpha / \pi)^{1/4} (2^v v!)^{-1/2} H_v(\sqrt{\alpha}x)e^{-\alpha x^2/2}$, wobei $H_v$ die Hermite-Polynome sind ($\to$ 4-13).
   * $E_v = h\nu \qty(v + \frac{1}{2})$
-  * **TODO**
-
+  * $\nu = \frac{1}{2\pi}\sqrt{k/m}$
 
 ## Schwingung zweiatomiger Moleküle
+* Gesamtmasse $M = m_1 + m_2$, reduzierte Masse $\mu = m_1 m_2 / M$
+* Wähle Koordinatensystem so, dass $x$-Achse mit Molekülachse zusammenfällt und Potential abhängig vom internuklearen Abstand ist: $V(x) = V(\va{r_2} - \va{r_1})$
+* Schwerpunkt $(\va{X} = m_1 \va{x_1} + m_2 \va{x_2})/M$
+* $\hat H = - \frac{\hbar^2}{2m}\pdv[2]{x_1} - \frac{\hbar^2}{2m}\pdv[2]{x_2} + V(x_1 - x_2)$
+* Koordinatentrf. $(x_1,x_2) \mapsto (x,X)$ ergibt die Trennung von Schwerpunktsbewegung und molekülinterner Bewegung: $\hat H = -\frac{\hbar^2}{2M}\pdv[2]{X} - \frac{\hbar^2}{2\mu}\pdv[2]{x} + V(x)$
+* Separation: $\hat H = \hat H_\text{trans}(X, p_X) + \hat H_\text{vib}(x, p_x)$; $E_{k,v} = E_{\text{trans}, k} + E_{\text{vib}, v}$; $\Psi_{k,v} = \Psi_k (X) \cdot \Psi_v (x)$
+
+## Wellengruppen
+
 
 # Kapitel 5: Drehimpulse in der Quantenmechanik
 ## Der Bahndrehimpuls
