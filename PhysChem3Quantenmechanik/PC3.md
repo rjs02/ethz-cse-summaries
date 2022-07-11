@@ -216,6 +216,14 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
 
 
 # Kapitel 4: Lineare Bewegungen
+## Freies Teilchen (1D)
+* Einfachstes System, das quantenmechanisch behandelt werden kann
+* $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2}$
+* allg. Lösung: $\Psi(x) = Ae^{ikx}+Be^{-ikx}$ mit $k = \sqrt{2mE_k \hbar^{-2}}$
+* Folgende Spezialfälle werden untersucht:
+  * $B=0$: $\Psi_k (x) = Ae^{ikx}$ ist eine Eigenfunktion von $\hat H$ zum Eigenwert $E_k = \hbar^2 k^2/2m$. $\Psi_k$ ist auch eine EF vom Impuls $\hat p_x$ mit EW $p_{x,k} = \hbar k$ ($\rightarrow$ Bewegung nach rechts). 
+  * $A=0$: $\Psi_{-k} (x) = Be^{-ikx}$ ist eine Eigenfunktion von $\hat H$ zum Eigenwert $E_k = \hbar^2 k^2/2m$. $\Psi_{-k}$ ist auch eine EF vom Impuls $\hat p_x$ mit EW $p_{x,k} = -\hbar k$ ($\rightarrow$ Bewegung nach links).
+  * $A=B\neq 0$: $\Psi_{\pm k} = 2A \cos(kx)$ ist eine EF von $\hat H$ mit EW $E_k = \hbar^2 k^2/2m$. $\hat p\Psi_{\pm k} = 2Ai\hbar k \sin(kx)$ ist _keine_ EF vom Impuls. Dieser ist also nicht definiert. $\Psi_{\pm k}$ ist eine Superposition von zwei Wellen mit gleicher Gewichtung. Eine Messung ergibt mit gleicher W'keit entweder $\hbar k$ oder $-\hbar k$, der Erwartungswert $\ev{\hat p} = 0$
 
 ## Teilchen im 1D Kasten
 * $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2} + V(x)$ mit Potential $V(x) = \begin{cases} 0 & \text{falls } 0 \leq x \leq L \\ \infty & \text{sonst.} \end{cases}$
@@ -225,7 +233,7 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
 * Das System hat eine Nullpunktsenergie $E_1 \neq 0$
 * Die Anzahl Knoten (Nullstellen von $\Psi_n$) im Intervall $[0, L]$ ist $n-1$ und wächst mit zunehmender Energie.
 
-## Teilchem im 2D/3D Kasten
+## Teilchen im 2D/3D Kasten
 * $\hat H = -\dfrac{\hbar^2}{2m} \qty(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}) + V(x,y)$ mit Potential $V(x,y) = \begin{cases} 0 & \text{falls } 0 \leq x \leq L_x, 0 \leq y \leq L_y \\ \infty & \text{sonst.} \end{cases}$
 * Schrödinger-Gleichung ist gem. Definitionen separabel und kann mit dem Ansatz $\Psi(x,y) = \Psi_{n_x}(x) \Psi_{n_y}(y)$ gelöst werden.
 * $E = -\dfrac{h^2}{2m} \qty(\dfrac{1}{\Psi_{n_x}(x)}\dfrac{\partial^2}{\partial x^2}\Psi_{n_x}(x) + \dfrac{1}{\Psi_{n_y}(y)}\dfrac{\partial^2}{\partial y^2}\Psi_{n_y}(y))$
@@ -354,7 +362,7 @@ Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen
 \begin{align*} \hat l^2 \ket{l,s,j,m_j} &= \hbar^2 l(l+1) \ket{l,s,j,m_j}, & \hat s^2 \ket{l,s,j,m_j} &= \hbar^2 s(s+1) \ket{l,s,j,m_j} \\ \hat j^2 \ket{l,s,j,m_j} &= \hbar^2 j(j+1) \ket{l,s,j,m_j}, & \hat j_z \ket{l,s,j,m_j} &= \hbar m_j \ket{l,s,j,m_j} \end{align*}
 
 
-# Wasserstoffatom im Magnetfeld
+## Wasserstoffatom im Magnetfeld
 * 1 Proton mit $I=1/2$, 1 Elektron mit $S=1/2$
 * Grundzustand $L=0$ (s-Orbital) $\Rightarrow$ kein Bahndrehimpuls
 * Im Magnetfeld $B = (0,0,B)^\top$ lautet der Hamilton-Operator: $$\hat H = \underbrace{-\gamma_S B \hat S_z - \gamma_H B \hat I_z}_\text{Kern/Elektron-Zeeman-WW} + \underbrace{a\hat{\vec{S}}\cdot\hat{\vec{I}}}_\text{Hyperfein}$$
