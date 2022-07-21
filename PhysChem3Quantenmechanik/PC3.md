@@ -6,6 +6,7 @@ author: |
 header-includes: |
         \usepackage{physics}
         \usepackage[most]{tcolorbox}
+        \usepackage{multicol}
 geometry:
 - top=0.8cm
 - bottom=0.8cm
@@ -15,7 +16,7 @@ geometry:
 classoption: twocolumn
 papersize:     a4
 pagestyle:     empty
-# fontfamily:    palatino #sans # palatino
+fontfamily:    sans #palatino
 # numbersections: true
 ---
 
@@ -256,7 +257,7 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
 ## Tunneleffekt
 Betrachte ein Teilchen mit einem Potential $V$, das eine rechtwinklige Barriere aufweist: $V(x) = \begin{cases} 0 & \text{für } x < 0 \lor x > D \\ V & \text{für } 0 \leq x \leq D \end{cases}$ 
 
-![Potential mit endlicher Barriere](img/tunnel_potential.png){width=25%} 
+![Potential mit endlicher Barriere](img/tunnel_potential.png){width=12%} 
 
 Die Schrödinger-Gleichung für das System lautet: $\hat H \Psi(x) = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2}\Psi + V(x)\Psi$. Die allgemeine Lösung für $A,B$ und $C$ lautet: $\Psi(x) = A e^{ikx} + Be^{-ikx}$ mit $k = \sqrt{\dfrac{2m(E-V)}{\hbar^2}} = i\kappa$, wobei wir für den Teil $A$ die Koeffizienten $A,B,k$, für $B$ $A', B', k'$ und für $C$ $A'', B'', k$ nutzen.
 
@@ -343,18 +344,18 @@ Diese Operatoren gelten für alle verschiedenen Drehimpulsarten, inkl. Spins. Au
 * **Achtung**: Im körperfesten System gibt es andere Kommutatoren, weil die Rotation entgegengesetzt erfolgt: $\qty[\hat J_x, \hat J_y] = -i\hbar \hat J_z$ (zyklisch).
 * Die entsprechenden Leiteroperatoren des körperfesten Systems wirken deshalb auch umgekehrt (hoch- statt tiefgestellt zur Unterscheidung). Wirkt auf $K$, weil Projektion auf körperfeste Achse: $$\hat J^\pm \ket{J,K,M} = \hbar \sqrt{J(J+1)-K(\mp 1)} \ket{J,K\mp 1,M}$$
 * In der Spektroskopie werden die Konstanten \begin{align*} \tilde A &= \dfrac{\hbar}{4\pi c I_a}, & \tilde B &= \dfrac{\hbar}{4\pi c I_b}, & \tilde C &= \dfrac{\hbar}{4\pi c I_c} \end{align*} (in cm$^{-1})$ verwendet mit Trägheitsmomenten $I_a \leq I_b \leq I_c$, so dass $\tilde A \geq \tilde B \geq \tilde C$.
-* Verschiedene Arten von Kreisel
-  * Spährischer Kreisel
-  * Prolater Kreisel
-  * Oblater Kreisel
-  * Zweiatomige Moleküle
-  * Asymmetrischer Kreisel
+* Verschiedene Arten von Kreisel ($\rightarrow$ Skript 5-17)
+  * Spährischer Kreisel ($I_x = I_y = I_z$)
+  * Prolater Kreisel, spindelförmig ($I_x = I_y < I_z$)
+  * Oblater Kreisel, tellerförmig ($I_x = I_y > I_z$)
+  * Zweiatomige Moleküle ($I_x = I_y, I_z = 0$)
+  * Asymmetrischer Kreisel ($I_x \neq I_y \neq I_z$)
 
 ## Drehimpulssysteme in Magnetfeldern
 * Klassische Energie einer mag. Moments im Magnetfeld ist $E = -\vec{\mu} \cdot \vec{B}$, wobei $\hat{\vec{\mu}} = \gamma\hat\vec{J}$ proportional zum Drehimpuls ist.
 * Für Kernspin/Elektron wird die Kern- bzw. Elektron-*Zeeman-Wechselwirkung* folgendermassen beschrieben: \begin{align*} \hat H_N &= -\gamma_N (\hat I_x B_x + \hat I_y B_y + \hat I_z B_z) \\ \hat H_e &= -\gamma_l (\hat l_x B_x + \hat l_y B_y + \hat l_z B_z) - \gamma_s (\hat s_x B_x + \hat s_y B_y + \hat s_z B_z) \\ \hat H_{SB} &= a \hat{\vec{l}}\cdot \hat{\vec{s}} = a(\hat l_x \hat s_x + \hat l_y \hat s_y + \hat l_z \hat s_z) \end{align*}
 wobei die letzte Zeile die *Spin-Bahn-Kopplung* für Elektronen beschreibt.
-* **Trick**: Bei SB-Kopplung Gesamtdrehimpuls $\hat{\vec{j}} = \hat{\vec{l}} + \hat{\vec{s}}$ verwenden, damit mit $\hat{\vec{l}}\cdot \hat{\vec{s}} = \frac{1}{2}(\hat j^2 - \hat s^2 - \hat l^2)$ die Operatoren $\hat l_x, \hat s_x, \hat l_y, \hat s_y$ vermieden werden können und die Basis $\{\ket{l,s,j,m_j}\}$ verwendet werden kann.
+* **Trick**: Bei SB-Kopplung Gesamtdrehimpuls $\hat{\vec{j}} = \hat{\vec{l}} + \hat{\vec{s}}$ verwenden, damit mit $\hat{\vec{l}}\cdot \hat{\vec{s}} = \frac{1}{2}(\hat j^2 - \hat s^2 - \hat l^2)$ die Operatoren $\hat l_x, \hat s_x, \hat l_y, \hat s_y$ vermieden werden können und die gekoppelte Basis $\{\ket{l,s,j,m_j}\}$ verwendet werden kann.
 * $\hat{\vec{l}} \cdot \hat{\vec{s}} = \hat{\vec{s}} \cdot \hat{\vec{l}}$, weil $\hat{\vec{l}}$ und $\hat{\vec{s}}$ kommutieren ($\hat{\vec{l}}$ wirkt auf den räumlichen Teil und $\hat{\vec{s}}$ auf den Spinteil der Wellenfunktion).
 
 ## Addition von Drehimpulsen
@@ -427,3 +428,199 @@ Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen
 * **jj-Kopplung**: Für schwere Atome.
   1. Gesamtdrehimpulse der einzelnen Elektronen bestimmen: $j_i = |l_i \pm 1/2|$.
   2. Terme als $(j_1,j_2)_{J_i}$ notieren, wobei $J_i = j_1 + j_2, j_1 + j_2 - 1, \dots, |j_1 - j_2|$ die möglichen Gesamtdrehimpulse des Systems sind.
+
+
+\newpage
+# Serien
+\begin{multicols}{3}
+\hypertarget{s1}{%
+\subparagraph{S1}\label{s1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Hohlraumstrahlung
+\item
+  Photonen \& Laserkühlung
+\item
+  Pauli-Matrizen
+\end{enumerate}
+
+\hypertarget{s2}{%
+\subparagraph{S2}\label{s2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Quadratisch integrierbare Funtionen
+\item
+  Korrespondenzprinzip (He + H2)
+\item
+  Unendlich-dimensionales Eigenwertproblem
+\end{enumerate}
+
+\hypertarget{s3}{%
+\subparagraph{S3}\label{s3}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Erwartungswerte und Matrixdarstellung quantenmechanischer Operatoren
+\item
+  Eigenschaften von Kommutatoren
+\end{enumerate}
+
+\hypertarget{s4}{%
+\subparagraph{S4}\label{s4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Matrixdarstellung von Operatoren: Würfelwurf
+\item
+  Heisenbergsche Unbestimmtheitsrelation (Teilchen im Kasten +
+  harmonischer Oszillator)
+\item
+  Variationsprinzip (Oszillator)
+\end{enumerate}
+
+\hypertarget{s5}{%
+\subparagraph{S5}\label{s5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Zeitentwicklung von Erwartungswerten und Theorem von Ehrenfest
+\item
+  Gedankenexperimente mit einem Elektron (exam)
+\item
+  Teilchen im 2D-Kasten
+\end{enumerate}
+
+\hypertarget{s6}{%
+\subparagraph{S6}\label{s6}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Das Gram-Schmidtsche Orthogonalisierungsverfahren
+\item
+  Wellenpaket in einem harmonischen Oszillator
+\end{enumerate}
+
+\hypertarget{s7}{%
+\subparagraph{S7}\label{s7}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Molekülschwingungen von CO2 als quantenmechanischer Oszillator
+\item
+  Tunneleffekt in einem Doppelminimumpotential
+\end{enumerate}
+
+\hypertarget{s8}{%
+\subparagraph{S8}\label{s8}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Drehimpulsoperator für ein Spin-2-System
+\item
+  Der starre asymmetrische Kreisel
+\item
+  Harmonischer Oszillator: alternatives Lösungsverfahren mit
+  Leiteroperatoren (fakultative Aufgabe)
+\end{enumerate}
+
+\hypertarget{s9}{%
+\subparagraph{S9}\label{s9}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Addition von Drehimpulsvektoren und Spin-Bahn-Kopplung
+\item
+  Stern-Gerlach-Experiment
+\end{enumerate}
+
+\hypertarget{s10}{%
+\subparagraph{S10}\label{s10}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Historische Einführung
+\item
+  Schrödinger Gleichung
+\item
+  Postulate und Theoreme
+\item
+  Lineare Bewegung
+\item
+  Drehimpulse
+\end{enumerate}
+
+\hypertarget{s11}{%
+\subparagraph{S11}\label{s11}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Atomare Konfigurationen, Terme und Termkomponenten (Hundsche Regeln,
+  Spin-Bahn-Kopplung, Atomare Konfigurationen (LS- und jj-Kopplung)
+\item
+  H-Atom, atomare Einheiten und Penetration/Abschirmung
+\end{enumerate}
+
+\hypertarget{s12}{%
+\subparagraph{S12}\label{s12}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Anwendung der Störungstheorie an einem Zwei-Niveau-System
+\item
+  Wasserstoffatom im Magnetfeld
+\end{enumerate}
+
+\hypertarget{s13}{%
+\subparagraph{S13}\label{s13}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Stark-Effekt im Wasserstoffatom
+\item
+  Hückel-Verfahren am Beispiel des Cyclopentadienylradikals
+\end{enumerate}
+
+\hypertarget{s14}{%
+\subparagraph{S14}\label{s14}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Atome
+\item
+  Störungsrechnung
+\item
+  Moleküle
+\item
+  Hückel-Molekülorbitale (exam)
+\end{enumerate}
+\end{multicols}
