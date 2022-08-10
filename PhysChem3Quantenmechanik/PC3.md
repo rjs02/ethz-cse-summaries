@@ -179,6 +179,8 @@ $$ \dfrac{\ev{\Psi}{\hat H}}{\ip{\Psi}} \geq E_1$$
   wobei $\Psi$ von den Ortskoordinaten und der Zeit abhängt. Ausserdem muss eine Anfangsbedingung $\Psi_0$ gegeben sein.
 \end{tcolorbox}
 
+* Ansatz: $\Psi_n (q_i, t) = \varphi_n (q_i) \Theta_n (t) \Rightarrow \dots \Rightarrow \Psi(q_i,  t) = \varphi_n (q_i) \exp(-\dfrac{i E_n t}{\hbar})$
+* Die Wahrscheinlichkeitsverteilung ist _zeitunabhängig_: $\qty|\Psi(q_i, t)|^2 \dd{\tau} = \Psi^* \Psi \dd{\tau} = \qty|\varphi_n (q_i)|^2 \dd{\tau}$. EF von $\hat H$ sind also stationäre Zustände.
 
 ## Erhaltungssätze
 * Erhaltungssätze der klassischen Physik sind (mit Anpassungen) auch in der QM gültig.
@@ -623,4 +625,10 @@ Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen
 \item
   Hückel-Molekülorbitale (exam)
 \end{enumerate}
+\end{multicols}
+
+\newpage
+
+\begin{multicols}{2}
+\tableofcontents
 \end{multicols}
