@@ -49,8 +49,8 @@ fontfamily:    sans #palatino
 * $A$ ist _selbstadjungiert_, wenn $\qty(A^\dagger)_{ij} = \qty(A)^*_{ji}$ gilt.
 
 # Kapitel 1
-* Stefan: $U \propto T^4, M \propto \sigma T^4$
-* Wien: $\lambda_\text{max} = 0.201 hc/kT$
+* $E = h\nu = hc/\lambda = \hbar \omega$
+* Stefan: $U \propto T^4, M \propto \sigma T^4$; Wien: $\lambda_\text{max} = 0.201 hc/kT$
 * Rayleigh-Jeans: $\dd{U(\nu)} = \frac{8\pi h \nu^3}{c^3}\dd{\nu} \Rightarrow U_\text{tot} = \infty$
 * Planck: $\dd{U(\nu)} = \frac{8\pi h \nu^3}{c^3}\qty(\frac{\exp(-h\nu/kT)}{1-\exp(-h\nu/kT)}) \dd{\nu} \Rightarrow U_\text{tot} < \infty$
 * De-Broglie: $\Psi(\vec r, t) = \Psi_0 \exp(i(\vec k \cdot \vec r - \omega t)) = \Psi_0 \exp(\frac{i}{\hbar}(\vec p \cdot \vec r - Et)),\lambda_i = h/p_i, i=x,y,z$
@@ -168,7 +168,7 @@ Die **Heisenbergsche Unbestimmtheitsrelation** ist gegeben durch $$ \Delta A \De
 
 ## Variationsprinzip
 Ziel: Grundzustandsenergie abschätzen
-$$ \dfrac{\ev{\Psi}{\hat H}}{\ip{\Psi}} \geq E_1$$
+$$ \dfrac{\ev{\hat H}{\Psi}}{\ip{\Psi}} \geq E_1$$
 
 \begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
   colback=white,colframe=lime!75!black,colbacktitle=lime!75!black,
@@ -243,7 +243,7 @@ Es seien $\varphi_1$ und $\varphi_2$ zwei Eigenfunktionen eines Hamilton-Operato
 ## Teilchen im 2D/3D Kasten
 * $\hat H = -\dfrac{\hbar^2}{2m} \qty(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}) + V(x,y)$ mit Potential $V(x,y) = \begin{cases} 0 & \text{falls } x \in [0,L_x] \land y \in [0,L_y] \\ \infty & \text{sonst.} \end{cases}$
 * Schrödinger-Gleichung ist gem. Definitionen separabel und kann mit dem Ansatz $\Psi(x,y) = \Psi_{n_x}(x) \Psi_{n_y}(y)$ gelöst werden.
-* $E = -\dfrac{h^2}{2m} \qty(\dfrac{1}{\Psi_{n_x}(x)}\dfrac{\partial^2}{\partial x^2}\Psi_{n_x}(x) + \dfrac{1}{\Psi_{n_y}(y)}\dfrac{\partial^2}{\partial y^2}\Psi_{n_y}(y))$
+* $E = -\dfrac{h^2}{2m} \qty(\dfrac{1}{\Psi_{n_y}(y)}\dfrac{\partial^2}{\partial x^2}\Psi_{n_x}(x) + \dfrac{1}{\Psi_{n_x}(x)}\dfrac{\partial^2}{\partial y^2}\Psi_{n_y}(y))$
 * Das Problem lässt sich also $x$- und $y$-Richtung aufteilen mit 
   * $\Psi_{n_x}(x) = \sqrt{\dfrac{2}{L_x}} \sin(\dfrac{n_x\pi x}{L_x})$
   * $\Psi_{n_y}(y) = \sqrt{\dfrac{2}{L_y}} \sin(\dfrac{n_y\pi y}{L_y})$
@@ -282,7 +282,7 @@ Randbedingungen: $\Psi$ und $\dv{\Psi}{x}$ bei $x = 0$ und $x = D$ stetig sein. 
   * $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\dd^2}{\dd{x}^2} + \dfrac{1}{2}kx^2 = -\dfrac{\hbar^2}{2m} \qty[\dfrac{\dd^2}{\dd{x}^2} - \alpha^2 x^2]$ mit $\alpha = \sqrt{\dfrac{mk}{\hbar^2}} = \dfrac{2\pi \nu m}{\hbar} = \dfrac{\omega m}{\hbar}$
   * $\Psi(x) = A \exp(-\frac{\alpha x^2}{2}) \underbrace{\sum_{l=0}^\infty c_{2l} x^{2l}}_\text{gerade Fkt.} + B \exp(-\frac{\alpha x^2}{2}) \underbrace{\sum_{l=0}^\infty c_{2l+1} x^{2l+1}}_\text{ungerade Fkt.}$
   * Da der harmonische Oszillator eine Inversionssymmetrie um $x=0$ aufweist, vertauscht der Hamilton-Operator mit dem Paritätsoperator.
-  * $\Psi_v(x) = (\alpha / \pi)^{1/4} (2^v v!)^{-1/2} H_v(\sqrt{\alpha}x)e^{-\alpha x^2/2}$, wobei $H_v$ die Hermite-Polynome sind ($\to$ 4-13).
+  * $\Psi_v(x) = (\alpha / \pi)^{1/4} (2^v v!)^{-1/2} H_v(\sqrt{\alpha}x)e^{-\alpha x^2/2}$, wobei $H_v$ die Hermite-Polynome sind ($\to$ 4-11, 4-13).
   * $E_v = h\nu \qty(v + \frac{1}{2})$
   * $\nu = \frac{1}{2\pi}\sqrt{k/m}$
 
@@ -293,8 +293,7 @@ Randbedingungen: $\Psi$ und $\dv{\Psi}{x}$ bei $x = 0$ und $x = D$ stetig sein. 
 * $\hat H = - \frac{\hbar^2}{2m}\pdv[2]{x_1} - \frac{\hbar^2}{2m}\pdv[2]{x_2} + V(x_1 - x_2)$
 * Koordinatentrf. $(x_1,x_2) \mapsto (x,X)$ ergibt die Trennung von Schwerpunktsbewegung und molekülinterner Bewegung: $\hat H = -\frac{\hbar^2}{2M}\pdv[2]{X} - \frac{\hbar^2}{2\mu}\pdv[2]{x} + V(x)$
 * Separation: $\hat H = \hat H_\text{trans}(X, p_X) + \hat H_\text{vib}(x, p_x)$; $E_{k,v} = E_{\text{trans}, k} + E_{\text{vib}, v}$; $\Psi_{k,v} = \Psi_k (X) \cdot \Psi_v (x)$
-
-## Wellengruppen
+* $E_v = h\nu_e (v+\frac{1}{2})$
 
 
 # Kapitel 5: Drehimpulse in der Quantenmechanik
@@ -319,7 +318,7 @@ Daraus folgt:
 * Damit gilt $|\vec{l}| = \hbar \sqrt{l(l+1)}$ und $l_z = \hbar m_l$ mit $|\vec{l}| > l_z$.
 
 ### Drehimpuls in Polarkoordinaten 
-**TODO**
+**TODO** ($\to$ 5-4)
 
 ### Lösen der Eigenwertgleichungen
 Mit dem Ansatz $Y(\theta, \phi) = S(\theta) T(\phi)$ erhalten wir **TODO**
@@ -359,16 +358,18 @@ Diese Operatoren gelten für alle verschiedenen Drehimpulsarten, inkl. Spins. Au
 wobei die letzte Zeile die *Spin-Bahn-Kopplung* für Elektronen beschreibt.
 * **Trick**: Bei SB-Kopplung Gesamtdrehimpuls $\hat{\vec{j}} = \hat{\vec{l}} + \hat{\vec{s}}$ verwenden, damit mit $\hat{\vec{l}}\cdot \hat{\vec{s}} = \frac{1}{2}(\hat j^2 - \hat s^2 - \hat l^2)$ die Operatoren $\hat l_x, \hat s_x, \hat l_y, \hat s_y$ vermieden werden können und die gekoppelte Basis $\{\ket{l,s,j,m_j}\}$ verwendet werden kann.
 * $\hat{\vec{l}} \cdot \hat{\vec{s}} = \hat{\vec{s}} \cdot \hat{\vec{l}}$, weil $\hat{\vec{l}}$ und $\hat{\vec{s}}$ kommutieren ($\hat{\vec{l}}$ wirkt auf den räumlichen Teil und $\hat{\vec{s}}$ auf den Spinteil der Wellenfunktion).
+* $\hat{S_x} \hat{I_x} + \hat{S_y} \hat{I_y} = \frac{1}{2}(\hat{S_+}\hat{I_-} + \hat{S_-}\hat{I_+})$
 
 ## Addition von Drehimpulsen
 Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen unterschiedlicher Operatoren
 
 ### Ungekoppelte Darstellung
+* Matrizen in Kroneckerprodukt aufsplitten ($\to$ 5-34)
 * Annahme: $\vec{l}$ und $\vec{s}$ wechselwirken nicht
 * $\ket{l,m_l}\ket{s,m_s} = \ket{l,m_l,s,m_s}$
 * $m_l = 0,\dots,\pm l$ und $m_s = 0,\dots,\pm s$
 * $m_j = m_l + m_s$
-\begin{align*} \hat l^2 \ket{l,m_l,s,m_s} &= \hbar^2 l(l+1)\ket{l,m_l,s,m_s}, & \hat l_z \ket{l,m_l,s,m_s} &= \hbar^2 m_l\ket{l,m_l,s,m_s} \\ \hat s^2 \ket{l,m_l,s,m_s} &= \hbar^2 s(s+1)\ket{l,m_l,s,m_s}, & \hat s_z \ket{l,m_l,s,m_s} &= \hbar^2 m_s\ket{l,m_l,s,m_s} \end{align*}
+\begin{align*} \hat l^2 \ket{l,m_l,s,m_s} &= \hbar^2 l(l+1)\ket{l,m_l,s,m_s}, & \hat l_z \ket{l,m_l,s,m_s} &= \hbar m_l\ket{l,m_l,s,m_s} \\ \hat s^2 \ket{l,m_l,s,m_s} &= \hbar^2 s(s+1)\ket{l,m_l,s,m_s}, & \hat s_z \ket{l,m_l,s,m_s} &= \hbar m_s\ket{l,m_l,s,m_s} \end{align*}
 
 ### Gekoppelte Darstellung
 * Annahme: Starke Wechselwirkung zw. $\vec{l}$ und $\vec{s} \Rightarrow$ verwende Gesamtdrehimpuls $\vec{j} = \vec{l} + \vec{s}$.
@@ -383,6 +384,7 @@ Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen
 * Grundzustand $L=0$ (s-Orbital) $\Rightarrow$ kein Bahndrehimpuls
 * Im Magnetfeld $B = (0,0,B)^\top$ lautet der Hamilton-Operator: $$\hat H = \underbrace{-\gamma_S B \hat S_z - \gamma_H B \hat I_z}_\text{Kern/Elektron-Zeeman-WW} + \underbrace{a\hat{\vec{S}}\cdot\hat{\vec{I}}}_\text{Hyperfein}$$
 * Die Hyperfein-WW verhindert das leichte Finden der Energien, da weder $\ket{I,M_I,S,M_S}$ noch $\ket{I,S,F,M_F}$ Eigenzustände von $\hat H$ sind. Lösung $\rightarrow$ Skript 5-33
+* $E = -\vec{\mu} \cdot \vec{B}$ mit magn. Moment $\vec{\mu} = \gamma\hat{\vec{J}}$ und gyromagnetischem Verhältnis $\gamma$
 
 # Kapitel 6: Atome
 ## Das Wasserstoffatom
@@ -395,6 +397,7 @@ Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen
 * Wahrscheinlichkeit, ein Elektron im Zustand $\Psi_{n,l,m_l}$ in einem Abstand $r$ vom Kern zu finden, ist $$p_{n,l}(r)\dd{r} = \qty|R_{n,l}|^2 r^2 \dd{r}$$
 
 ## Alkalimetallatome
+* Erste Hauptgruppe (Li, Na, K, Rb, Cs, Fr)
 * Können ähnlich behandelt werden, weil sie nur ein Valenzelektron besitzen. Die Stärke der Abschirmung ist von $n$ *und* $l$ abhängig, was zur Aufhebung der Entartung in $l$ führt. Mit dem Quantendefekt $\delta_l$ und der Ionisierungsenergie $E_i$ des Atoms erhält man die **Rydberg-Formel** $$E_{n,l} = E_i - \dfrac{hcR}{(n-\delta_l)^2}$$
 
 ## Mehrelektronenatome und Pauli-Prinzip
@@ -418,19 +421,23 @@ Beide Darstellungen beschreiben denselben Hilbertraum, sind aber Eigenfunktionen
   1. Ermittle Elektronenkonfiguration.
   2. Alle vollbesetzten Schalen weglassen. Falls nur vollbesetzte Schalen vorhanden sind, erhalten wir direkt den einzig möglichen Term: $\ts{1}{S}{0}$.
   3. Alle gemäss Pauli-Prinzip erlaubten Zustände auflisten und zugehörige Werte $M_S = \sum_i m_{s,i}$ und $M_L = \sum_i m_{l,i}$ notieren.
-  4. Mit grösstem $(M_L,M_S)$-Paar beginnen. Dieses deutet auf einen Zustand mit $L=M_L$ und $S=M_S$ hin $\Rightarrow$ entsprechenden Term $\ts{2S+1}{L}{J_i}$ notieren, wobei $J_i = L+S, L+S-1, \dots, |L-S|$. Für L $=0,1,3,4,\dots$ schreibt man S, P, D, F, G,...
+  4. Mit grösstem $(M_L,M_S)$-Paar beginnen. Dieses deutet auf einen Zustand mit $L=M_L$ und $S=M_S$ hin $\Rightarrow$ entsprechenden Term $\ts{2S+1}{L}{J_i}$ notieren, wobei $J_i = L+S, L+S-1, \dots, |L-S|$. Für L $=0,1,2,3,4,\dots$ schreibt man S, P, D, F, G,...
   5. Nun müssen alle zu diesen Termen gehörenden Paare $(M_L',M_S')$, gegeben durch $M_L' = L,L-1,\dots,-L$ und $M_S'=S,S-1,\dots,-S$ aus der Liste gestrichen werden.
   6. Wiederhole Schritte 4 und 5, bis alle $(M_L,M_S)$-Paare aus der Liste gestrichen sind.
+
 * Nach der Bestimmung aller möglichen Terme muss der *Grundzustandsterm* gefunden werden. Dazu müssen die **Hundschen Regeln** befolgt werden:
   1. Maximiere $S$
   2. Maximiere $L$
   3. Maximiere $J$, falls Schale mehr als halbvoll, sonst minimieren.
+  
+  Sind empirisch und sollten **nur auf den Grundzustand** angewendet werden.
 * **Trick**: Bei mehr als halbvollen Schalen, können statt den vorhandenen Elektronen auch die fehlenden ("Löcher") betrachtet werden. Die folgenden Konfigurationen haben dieselben möglichen Termsymbole: (2p)$^\text{5} \Leftrightarrow$ (2p)$^\text{1}$, (3d)$^\text{9} \Leftrightarrow$ (3d)$^\text{1}$, (3d)$^\text{8} \Leftrightarrow$ (3d)$^\text{2}$ etc. *Die Bestimmung des Grundzustands kann dabei wegen der 3. Hundschen Regel zu einem anderen Ergebnis führen!*
 
 * **jj-Kopplung**: Für schwere Atome.
   1. Gesamtdrehimpulse der einzelnen Elektronen bestimmen: $j_i = |l_i \pm 1/2|$.
   2. Terme als $(j_1,j_2)_{J_i}$ notieren, wobei $J_i = j_1 + j_2, j_1 + j_2 - 1, \dots, |j_1 - j_2|$ die möglichen Gesamtdrehimpulse des Systems sind.
 
+* **Entartungsfaktor**: $g_J = 2J+1$
 
 \newpage
 # Serien
