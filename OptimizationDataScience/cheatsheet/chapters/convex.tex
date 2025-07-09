@@ -1,0 +1,68 @@
+\section*{Convex Functions}
+
+Convex functions are continuous: $\dom(f)$ open, $f$ convex $\Rightarrow f$ continuous. (proof not obv)
+
+\begin{mathbox}
+    {Convex function}
+    {$\forall x, y \in \dom(f)$ conv, $\lambda \in [0,1]$}
+    {f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y) \\
+    f(y) \geq f(x) + \nabla f(x)^\top (y-x) \\
+    y^\top \nabla^2 f(x) y \geq 0}
+    {}
+\end{mathbox}
+1oc requires $\nabla f$ to exist at every point and $\dom(f)$ open. 1oc is equivalent to \textbf{monotonicity of the gradient} $(\nabla f(y) - \nabla f(x))^\top (y-x) \geq 0$. 2oc requires $\nabla^2 f$ to exist at every point and $\dom(f)$ open.
+
+\begin{noeqmathbox}
+    {Convexity preserving operations}
+    {$\lambda_i \in \R_+, f_i$ convex, $g: \R^m \to \R^d$}
+    {$f:= \max_i f_i \lor f:= \sum_i \lambda_i f_i$ convex on $\dom(f) = \cap_i \dom(f_i)$ \newline
+    $g(x) = Ax+b \Rightarrow f(x) = f(g(x))$ convex if $f$ convex on $\{x \in \R^m : g(x) \in \dom(f)\}$}
+\end{noeqmathbox}
+$f, g$ convex $\not\Rightarrow f \circ g$ convex! E.g. $f = -\ln, g = x^2 -1$, domain will not be convex. $f$ co, $g$ co + non-decreasing $\Rightarrow g(f(x))$ co. $f, g$ co, positive \& monotonically incr. $\Rightarrow fg$ co.
+
+\begin{mathbox}
+    {Global minimum}
+    {Let $f$ conv, $\dom(f)$ open, $x \in \dom(f)$. Then:}
+    {x \text{ is global minimum of } f \Leftrightarrow \nabla f(x) = 0}
+    {$(\Rightarrow)$ doesn't require convexity}
+\end{mathbox}
+
+If $f$ is \textbf{strictly convex}, there is at most one global minimum. $\nabla f(x) \succ 0 \ \forall x \Rightarrow f$ strictly co. $\not\Leftarrow$: $f(x) = x^4$.
+
+% \textbf{Constrained opt:} $f \dom(f) \to \R$ co+diff. $X \subseteq \dom(f)$ co. $x^* \in X$ is a minimizer $\Leftrightarrow \nabla f(x^*)^\top (x-x^*) \geq 0 \ \forall x \in X$.
+
+% \begin{noeqmathbox}
+%     {Contrained opt.}
+%     {$f \dom(f) \to \R$ co+diff. $X \subseteq \dom(f)$ co. $x^* \in X$ is a minimizer $\Leftrightarrow \nabla f(x^*)^\top (x-x^*) \geq 0 \ \forall x \in X$.}
+%     {}
+% \end{noeqmathbox}
+
+\begin{smallmathbox}
+    {Constr. opt.}
+    {f : \dom(f) \to \R\) co+diff. \(X \subseteq \dom(f)\) co. \(x^* \in X\) is a min \(\Leftrightarrow \nabla f(x^*)^\top (x-x^*) \geq 0 \ \forall x \in X.}
+\end{smallmathbox}
+
+% Weierstrass thm etc.
+W'strass: $f$ cont. If sublvl set $f^{\leq \alpha}$ nonempty and bounded, then $f$ has glob min.
+
+% Lagrange duality
+
+ \textbf{Convex programming}: $\min f_0 (x)\text{, s.t. } f_i(x) \leq 0, h_j (x) = 0, \ (i = 1..m, j=1..p)$. Feasible region: $X = \{ x \in \R^d : f_i(x) \leq 0, h_j(x) = 0 \forall i,j \}$.
+
+ \textbf{Lagrangian}: $ L : \mathcal{D} \times R^m \to \R$, $L(x, \lambda, \nu) = f_0 (x) + \sum_{i=1}^{m} \lambda_i f_i(x) + \sum_{j=1}^{p} \nu_j h_j(x)$. $\lambda_i, \nu_i$ are Langrange multipliers.
+
+ \textbf{Dual function}: $g : \R^m \times \R^p \to \R$ \cup \{ -\infty \}, $g(\lambda, \nu) = \inf_{x \in D} L(x, \lambda, \nu)$.
+
+ \textbf{Weak duality}: If $x$ feasible, then $g(\lambda, \nu) \leq f_0(x)$ for all $\lambda \in \R^m \geq 0, \nu \in \R^p$.
+
+\textbf{Dual problem}: $\max g(\lambda, \nu)\text{, s.t. } \lambda \geq 0$. Always conv (even if primal isn't).
+
+\textbf{Slater point}: Suppose a conv prog with feasible solution $\tilde{x}$ in addition satisfies $f_i(\tilde{x}) < 0, i=1..m$ (a Slater point). Then the infimum value of the primal equals the supremum value of the dual. Moreover, if the value is finite, it is attained by a feasible solution of the dual. Note: Strong duality $(\inf f_0 (x) = \sup g(\lambda, \nu))$ may also hold when there is no Slater point or even when it's not a conv prog. The stated Slater point condition provides one particular sufficient condition.
+
+\textbf{KKT conditions}: When strong duality holds, KKT provide necessary and --under convexity-- sufficient conditions. Let $\tilde{x}, (\tilde{\lambda}, \tilde{\nu})$ be primal and dual optimal solutions with 0 duality gap ($f_0(\tilde{x}) = g(\tilde{\lambda}, \tilde{\nu})$). If all $f_i, h_j$ are differentiable, then (necessary):
+\begin{align*}
+    \tilde{\lambda}_i f_i(\tilde{x}) = 0, \quad i=1..m \\
+    \nabla f_0(\tilde{x}) + \sum_{i=1}^{m} \tilde{\lambda}_i \nabla f_i(\tilde{x}) + \sum_{j=1}^{p} \tilde{\nu}_j \nabla h_j(\tilde{x}) = 0
+\end{align*}
+
+Sufficient: All $f_i, h_j$ diff, all $f_i$ conv, $h_j$ affine and the above equations hold. Then $\tilde{x}, (\tilde{\lambda}, \tilde{\nu})$ have 0 duality gap.

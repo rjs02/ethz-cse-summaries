@@ -1,0 +1,33 @@
+\section*{Frank-Wolfe}
+Constrained opt. $\min_{x \in X} f(x)$
+
+Proj in Proj GD can be expensive even for convex sets.
+
+Linear Min. Oracle: $\text{LMO}_X (g) := \argmin_{z\in X} g^\top z$.
+
+Algorithm ($\gamma_t \in [0, 1]$):
+\begin{align*}
+    s &:= \text{LMO}_X (\nabla f(x_t)) \\
+    \xtp &:= (1 - \gamma_t) x_t + \gamma_t s
+\end{align*}
+In each step, alg. minimizes the linear approximation over the set $X$ and makes a step in the direction of the minimizer. Iterates are always feasible. 
+
+\textbf{Duality gap} / Hearn gap: $g(x) := \nabla f(x)^\top (x - s)$. $g$ can be interpreted as opt gap of the linear subproblem $\nabla f(x)^\top x - \nabla f(x)^\top s$. $g(x) \geq 0$.
+
+Duality gap is an upper bound for the optimality gap: $g(x) \geq f(x) - \fxo$. I.e. $g(x_t)$ always gives a guaranteed upper bound on the optimality gap.
+
+% Fig. 7.3 might be useful
+
+$f$ co, $L$-sm, $X$ closed+bounded, $\mu_t = \gamma_t := 2/(t+2)$, then: $\varepsilon_T \leq \frac{2L \text{diam}(X)^2}{T+1}, \ T \geq 1, \ \text{diam}(X) := \max_{x,y \in X} \lnorm x - y \rnorm$.
+
+Descent lemma for $\gamma_t \in [0, 1]$: $f(\xtp) \leq f(x_t) - \gamma_t g(x_t) + \gamma_t^2 \frac{L}{2} \lnorm s - x_t \rnorm^2$.
+
+Stepsize variants:
+
+\textit{Line search} s.t. progress is maximal: $\gamma_t := \argmin_{\gamma \in [0, 1]} f((1-\gamma)x_t + \gamma s)$. For $h(x) = f(x) - \fxo$, we then obtain: $h(\xtp) \leq h(y_{t+1}) \leq (1 - \mu_t) h(x_t) + \mu_t^2 \frac{L}{2} \text{diam}(X)^2$, where $y_{t+1}$ is the iterate obtained using standard stepsize $\mu_t$
+
+\textit{Gap-based} $\gamma_t := \min\{1, \frac{g(x_t)}{L \lnorm s - x_t \rnorm^2}\}$ and progress is guaranteed in every iteration: $h(\xtp) \leq \begin{cases} h(x_t) - (1 - \frac{\gamma_t}{2}), & \gamma_t < 1 \\ h(x_t), & \gamma_t = 1 \end{cases}$
+
+% TODO affine invariance, curvature constant
+
+$(f, X), (f', X')$ \textbf{affinely equiv} if $f'(x) = f(Ax+b)$ for A inv. $X' = \{ A^{-1}(x-b) : x \in X\}$. LMO+FW return same iterates.

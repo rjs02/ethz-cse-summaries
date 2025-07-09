@@ -1,0 +1,32 @@
+\section*{Coordinate Descent \textbf{(CD)}}
+For GD proved $x_t \to \xo$, here only $f(x_t) \to \fxo$. 
+
+\begin{mathbox}
+    {PL inequality}
+    {$f$ diff w/ glob min $\xo$. $\exists \mu > 0$ s.t.:}
+    {\frac{1}{2} \lnorm \nabla f(x) \rnorm^2 \geq \mu (f(x) - \fxo), \quad \forall x \in \R^d}
+    {}
+\end{mathbox}
+$\mu$-sc $\Rightarrow$ PL holds. (PL is a strictly weaker condition, e.g. $f(x_1, x_2) = x_1^2$ satisfies PL but not $\mu$-sc.) Even some non-conv funcs can satisfy PL.
+
+$f$ $L$-sm, PL holds, $\gamma := 1/L$: $\varepsilon_T \leq (1-\mu/L)^T \varepsilon_0, \ T > 0$.
+
+\begin{mathbox}
+    {Coord.-wise smooth}
+    {$f$ diff, $\mathcal{L} = (L_1, \ldots, L_d) \in \R_d^+$. If}
+    {f(x+\lambda e_i) \leq f(x) + \lambda \nabla_i f(x) + \frac{L_i}{2}\lambda^2, \ \forall x \in \R^d, \lambda \in \R}
+    {holds, cw-sm w/ $\mathcal{L}$. If $L_i = L$, then w/ param $L$.}
+\end{mathbox}
+
+Algorithm: Choose $i \in [d]: \xtp := x_t - \gamma_i \nabla_i f(x_t) e_i$
+
+$f$ $\mathcal{L}$-cw-sm, $\gamma_i = 1/L_i$: $f(\xtp) \leq f(x_t) - \frac{1}{2L_i} \labs \nabla_i f(x_t) \rabs^2$.
+
+Randomized CD: $i \in [d]$ chosen uniformly at random in step $t$. $f$ $L$-sm, PL holds, $\gamma_i = 1/L$: $\E[\varepsilon_T] \leq (1-\mu/(dL))^T \varepsilon_0, T>0$.
+
+Importance Sampling: choose coordinate actively, sample $i \in [d]$ with prob. $p_i = \frac{L_i}{\sum_{j=1}^d L_j}$. CD-step: $\xtp := x_t - \frac{1}{L_i}\nabla_i f(x_t) e_i$.\newline
+Theorem: $f$ diff with gl. min. $\xo$. Suppose $f$ cw-sm with param $\mathbb{L} = (L_1, ..., L_d)$, PL holds with $\mu > 0$. Let $\overline{L} = \frac{1}{d} \sum_{i=1}^d L_i$. Then CD with IS and arbitrary $x_0$ satisfies $\E[f(x_T) - f(\xo)] \leq (1-\frac{\mu}{d \overline{L}})^T (f(x_0) - f(x^*)), T > 0$.
+
+Steepest CD: $i = \argmax_i \labs \nabla_i f(x_t) \rabs$.$f$ $L$-cw-sm, PL holds, $\gamma_i = 1/L$. No $\E$ since alg is deterministic: $\varepsilon_T \leq (1-\mu/(dL))^T \varepsilon_0, T > 0$. $\Rightarrow$ Difference to GD is that only cw-sm instead of global smoothness is needed. In case $f$ $\mu$-sc wrt $\ell_1$-norm (stronger cond.), then $d$ can be dropped in the bound.
+
+Greedy CD: $f$ diff not required. Choose $i \in [d]: \xtp := \argmin_{\lambda \in \R} f(x_t - \lambda e_i)$. But now additional 1D opt. problem in each step.

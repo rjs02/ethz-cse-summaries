@@ -1,0 +1,31 @@
+\section*{Gradient Descent \textbf{(GD)}}
+\begin{align*}
+    \xtp = x_t - \gamma \nabla f(x_t)
+\end{align*}
+Vanilla analysis: Bound for avg. error since $x_T$ is not necessarily close to best. Result follows from 1oc, UR and cos-thm.
+
+$f$ conv: $\sum_{t=0}^{T-1}\varepsilon_t \leq \frac{\gamma}{2} \sum_{t=0}^{T-1} \lnorm g_t \rnorm^2 + \frac{1}{2\gamma} \lnorm x_0 - \xo \rnorm^2$
+
+$f$ conv, $\lnorm x_0 - \xo \rnorm \leq R, \lnorm \nabla f(x) \rnorm \leq B, \gamma = R/(B\sqrt{T})$: $\frac{1}{T}\sum_{t=0}^{T-1}\varepsilon_t \leq \frac{RB}{\sqrt{T}}$ and $\min_{t=0}^{T-1} \varepsilon_t \leq \varepsilon \Rightarrow T \geq \frac{R^2B^2}{\varepsilon^2}$
+
+\begin{mathbox}
+    {Sufficient decrease}
+    {$f$ $L$-smooth, $\gamma := 1/L$}
+    {f(\xtp) \leq f(x_t) - \frac{1}{2L} \lnorm \nabla f(x_t) \rnorm^2, \ t \geq 0}
+    {}
+\end{mathbox}
+
+$f$ conv, $L$-smooth: $f(x_T) - f(\xo) \leq \frac{L}{2T} \lnorm x_0 - \xo \rnorm^2$ and $T \geq \frac{R^2L}{2\varepsilon}$
+
+% AGD TODO(?)
+
+$f$ conv, $L$-sm, $\mu$-sc: vanilla: $\varepsilon_t \leq \frac{1}{2\gamma}(\gamma^2\lnorm \nabla f(x_t) \rnorm^2 + \lnorm x_t - \xo \rnorm^2 - \lnorm \xtp - \xo \rnorm^2) - \frac{\mu}{2} \lnorm x_t - \xo \rnorm^2$.
+% \begin{align*}
+%     \varepsilon_t \leq \frac{1}{2\gamma}(\gamma^2\lnorm \nabla f(x_t) \rnorm^2 + \lnorm x_t - \xo \rnorm^2 - \lnorm \xtp - \xo \rnorm^2) - \frac{\mu}{2} \lnorm x_t - \xo \rnorm^2
+% \end{align*}
+With $\gamma = 1/L$ we get (i) geometrically decr dist to $\xo$ and (ii) exp small abs error after $T$ iter.
+\begin{align*}
+    \lnorm \xtp - \xo \rnorm^2 \leq (1 - \mu/L) \lnorm x_t - \xo \rnorm^2, \ t \geq 0\\
+    f(x_T) - f(\xo) \leq \frac{L}{2} (1 - \mu/L)^T \lnorm x_0 - \xo \rnorm^2, \ T > 0
+\end{align*}
+It follows $T \geq \frac{L}{\mu} \ln\left(\frac{R^2 L}{2\varepsilon}\right)$

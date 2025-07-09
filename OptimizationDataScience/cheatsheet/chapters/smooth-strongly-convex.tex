@@ -1,0 +1,72 @@
+\section*{$L$-smoothness}
+
+\begin{mathbox}
+    {$L$-smoothness}
+    {$f: \R^d \to \R$, conv not req. (!)}
+    {f(y) \leq f(x) + \nabla f(x)^\top (y-x) + \frac{L}{2} \lnorm y-x \rnorm^2}
+    {}
+\end{mathbox}
+
+If $f$ co, the following are equiv.:
+\begin{align*}
+    \lnorm \nabla f(x) - \nabla f(y) \rnorm \leq L \lnorm x-y \rnorm \\
+    f(y) \geq f(x) + \nabla f(x)^\top (y-x) + \frac{1}{2L} \lnorm \nabla f(x) - \nabla f(y) \rnorm^2 \\
+    (\nabla f(x) - \nabla f(y))^\top (x-y) \geq \frac{1}{L} \lnorm \nabla f(x) - \nabla f(y) \rnorm^2 \\
+    (\nabla f(x) - \nabla f(y))^\top (x-y) \leq L \lnorm x-y \rnorm^2
+\end{align*}
+
+Also these: $f(\lambda x + (1-\lambda)y) \geq \lambda f(x) + (1-\lambda) f(y) - \frac{\lambda(1-\lambda)L}{2} \lnorm x-y \rnorm^2$ and $f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda) f(y) - \frac{\lambda(1-\lambda)}{2L} \lnorm \nabla f(x) - \nabla f(y) \rnorm^2$.
+
+For $f$ $2\times$ diff, also $\nabla^2 f(x) \preceq L \mathbf{I}$ is equiv.
+
+$f$ $L$-smooth $\Leftrightarrow$ $g(x) := \frac{L}{2}x^\top x - f(x)$ is convex on $\dom(f)$.
+
+All $f(x) = x^\top Q x + b^\top x + c$ are $2\lnorm Q \rnorm$-smooth.
+
+$f = \sum \lambda_i f_i$ is $\sum \lambda_i L_i$-smooth. $f(Ax + b)$ is $L\lnorm A \rnorm^2$-smooth.
+
+
+% ==============================================
+
+\section*{$\mu$-strong convexity}
+
+\begin{mathbox}
+    {$\mu$-strong convexity}
+    {$f: \R^d \to \R$}
+    {f(y) \geq f(x) + \nabla f(x)^\top (y-x) + \frac{\mu}{2} \lnorm y-x \rnorm^2}
+    {}
+\end{mathbox}
+
+
+$f$ $\mu$-sc $\Leftrightarrow$ $g(x) = f(x) - \frac{\mu}{2} x^\top x$ is convex on $\dom(f)$.
+
+$f$ $\mu$-sc $\Leftrightarrow (\nabla f(x) - \nabla f(y))^\top (x-y) \geq \mu \lnorm x-y \rnorm^2$.
+
+$f$ $\mu$-sc $\Leftrightarrow f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda) f(y) - \frac{\alpha(1-\alpha)\mu}{2} \lnorm x-y \rnorm^2$.
+
+$f$ $\mu$-sc $\Leftrightarrow \nabla^2 f(x) \succeq \mu \mathbf{I}$.
+
+$f$ $\mu$-sc $\Rightarrow \lnorm \nabla f(x) - \nabla f(y) \rnorm \geq \mu \lnorm x-y \rnorm$.
+
+$f$ $\mu$-sc $\Rightarrow f(y) \leq f(x) + \nabla f(x)^\top (y-x) + \frac{1}{2\mu} \lnorm \nabla f(x) - \nabla f(y) \rnorm^2$.
+
+$f$ $\mu$-sc $\Rightarrow (\nabla f (x) - \nabla f(y))^\top (x-y) \leq \frac{1}{\mu} \lnorm \nabla f(x) - \nabla f(y) \rnorm^2$.
+
+$f$ $\mu$-sc $\Rightarrow$ $f$ strictly convex + has unique global minimum.
+
+$f$ is $\mu$-smooth \textit{and} $\mu$-sc $\Rightarrow$ $f(x) = \frac{\mu}{2} \lnorm x - b \rnorm^2 + c$.
+
+$f$ $L$-sm and $\mu$-sc $\Rightarrow$ $(\nabla f(x) - \nabla f(y))^\top (x-y) \geq \frac{\mu L}{\mu + L} \lnorm x-y \rnorm^2 + \frac{1}{\mu + L} \lnorm \nabla f(x) - \nabla f(y) \rnorm^2$.
+
+\section*{Convergence}
+Always w.r.t. $f(x) - f(\xo) < \varepsilon$, as there could be several minima $y^* \neq \xo$. $\bigO(1/\varepsilon)$ better than $\bigO(1/\varepsilon^2)$, but $\bigO(1/T^2)$ better than $\bigO(1/T)$.
+
+Convergence rates (must hold only for sufficiently large $t$): $\varepsilon_t = f(x_t) - f(\xo)$.
+
+Linear: $\varepsilon_{t+1} \leq c \varepsilon_t, c \in (0,1) \quad \Rightarrow \bigO(\log(1/\varepsilon))$.
+
+Sup.: $\varepsilon_{t+1} \leq c \varepsilon_t^r, c > 0, r > 1; r=2 \Rightarrow \bigO(\log\log (1/\varepsilon))$.
+
+Sublinear: Anything below linear.
+
+

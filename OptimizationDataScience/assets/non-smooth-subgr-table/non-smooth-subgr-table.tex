@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\input{../../cheatsheet/macros}
+
+\begin{document}
+
+\begin{tabular}{l|c|c}
+    & Convex & Strongly Convex \\
+    \hline
+    Subgr. D & $\mathcal{O}\left(\frac{BR}{\sqrt{t}}\right)$ & $\mathcal{O}\left(\frac{B^2}{\mu t}\right)$ \\[2ex]
+    AGD & $\mathcal{O}\left(\frac{LR^2}{t^2}\right)$ & $\mathcal{O}\left(\left(\frac{1-\sqrt{\kappa}}{1+\sqrt{\kappa}}\right)^{2t}\right)$ \\
+    \end{tabular}
+\end{document}

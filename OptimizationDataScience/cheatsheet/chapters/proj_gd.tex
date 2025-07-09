@@ -1,0 +1,29 @@
+\section*{Projected Gradient Descent \textbf{(Proj. GD)}}
+Choose $x_0 \in X$ arb. Proj is well-defined for squared dist, even sc and unique min for closed conv set $X$.
+\begin{align*}
+    y_{t+1} &:= x_t - \gamma \nabla f(x_t) \\
+    \xtp &:= \Pi_X (y_{t+1}) := \argmin_{x \in X} \lnorm x - y_{t+1} \rnorm^2
+\end{align*}
+
+For $X \subseteq \R^d$ closed and conv, $x \in X, y \in \R^d$, it holds:
+\begin{itemize} % Figure 4.1 in lecture notes
+    \item $(x - \Pi_X(y))^\top (y - \Pi_X(y)) \leq 0$ (angle $\geq 90^\circ$)
+    \item $\lnorm x - \Pi_X(y) \rnorm^2 + \lnorm y - \Pi_X(y) \rnorm^2 \leq \lnorm x - y \rnorm^2$
+\end{itemize}
+
+Proj is \textbf{non-expansive}: $\lnorm \Pi_X(x) - \Pi_X(y) \rnorm \leq \lnorm x - y \rnorm$.
+
+$f$ co, $X \subseteq \dom(f)$ closed \& co, $\lnorm x_0 - \xo \rnorm \leq R$, $\lnorm \nabla f(x) \rnorm \leq B$, $\gamma := R/(B\sqrt{T})$: $\frac{1}{T} \sum_{t=0}^{T-1} \varepsilon_t \leq (RB)/\sqrt{T}$. $\Rightarrow \bigO(1/\varepsilon^2)$.
+
+$f$ $L$-sm, $X \subseteq \dom(f)$ closed \& co, $\gamma := 1/L$: $f(\xtp) \leq f(x_t) - \frac{1}{2L} \lnorm \nabla f(x_t) \rnorm^2 + \frac{L}{2} \lnorm y_{t+1} - x_{t+1} \rnorm^2$.
+
+$f$ co, $L$-sm, $X \subseteq \dom(f)$ closed \& co, $\gamma := 1/L$: $\varepsilon_t \leq \frac{L}{2T} \lnorm x_0 - \xo \rnorm^2$.
+
+$f$ co, $L$-sm, $\mu$-sc, $X \subseteq \dom(f)$ closed \& co. With $\gamma := 1/L$ we get (i) geometrically decr dist to $\xo$ and (ii) exp small abs error after $T$ iter. Constrained optimization $\Rightarrow \nabla f(\xo) \neq 0$ possible!
+\begin{align*}
+    \lnorm \xtp - \xo \rnorm^2 &\leq (1 - \mu/L) \lnorm x_t - \xo \rnorm^2, \ t \geq 0\\
+    \varepsilon_T \leq \lnorm \nabla f(\xo) \rnorm \left( 1- \frac{\mu}{L} \right)^{T/2} &\lnorm x_0 - \xo \rnorm + \frac{L}{2} \left( 1 - \frac{\mu}{L} \right)^T \lnorm x_0 - \xo \rnorm^2
+\end{align*} 
+
+
+% TODO: Projecting onto \ell_1-balls

@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\input{../../cheatsheet/macros}
+
+\begin{document}
+\begin{tabular}{c|c|c|c|c}
+% \toprule
+% & \rotatebox{90}{Lip+co} & \rotatebox{90}{$L$+co} & \rotatebox{90}{$\mu$+co} & \rotatebox{90}{$L$+$\mu$+co} \\
+& Lip+co & $L$+co & $\mu$+co & $L$+$\mu$+co \\
+% \midrule
+\hline
+GD & $\bigO(\varepsilon^{-2})$ & $\bigO(\varepsilon^{-1})$ & & $\bigO(\log(\varepsilon^{-1}))$ \\
+AGD & & $\bigO(1/\sqrt{\varepsilon})$ & & \\
+Proj. GD & $\bigO(\varepsilon^{-2})$ & $\bigO(\varepsilon^{-1})$ & & $\bigO(\log(\varepsilon^{-1}))$ \\
+Subgr. D & $\bigO(\varepsilon^{-2})$ & & $\bigO(\varepsilon^{-1})$ & \\
+SGD & $\bigO(\varepsilon^{-2})$ & & $\bigO(\varepsilon^{-1})$ & \\
+% \bottomrule
+\end{tabular}
+\end{document}

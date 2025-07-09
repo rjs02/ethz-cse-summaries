@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\input{../../cheatsheet/macros}
+
+\begin{document}
+
+\begin{tabular}{l|l|l|l|l} 
+    Ex. & $\mathcal{A}$ & $|\mathcal{A}|$ & dim. & LMO$_X (g)$ \\
+    \hline
+    L1-ball & $\{\pm e_i \}$ & $2d$ & $d$ & $\pm e_i, i = \argmax_i |g_i|$ \\
+    Simplex & $\{e_i\}$ & $d$ & $d$ & $e_i, i = \argmin_i g_i$ \\
+    Spectahedron & $\{ xx^\top, \lnorm x \rnorm = 1\}$ & $\infty$ & $d^2$ & $\argmin_{\lnorm x \rnorm = 1} x^\top G x$ \\
+    Norms & $\{ x, \lnorm x \rnorm \leq 1\}$ & $\infty$ & $d$ & $\argmin_{\lnorm s \rnorm \leq 1} \langle s, g \rangle$ \\
+    Nuclear norm & $\{Y, \lnorm Y \rnorm_* \leq 1\}$ & $\infty$ & $d^2$ & .. \\
+\end{tabular}
+
+\end{document}

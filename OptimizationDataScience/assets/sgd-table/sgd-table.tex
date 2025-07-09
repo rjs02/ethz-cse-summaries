@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+
+\begin{document}
+\begin{tabular}{l|c|c|c}
+\toprule
+ & iteration complexity & iteration cost & total \\
+\midrule
+\multicolumn{4}{c}{\textbf{Smooth and strongly convex problems} ($\kappa = L/\mu$)} \\
+\midrule
+GD & $\mathcal{O}(\kappa \log(1/\varepsilon))$ & $\mathcal{O}(n)$ & $\mathcal{O}(n\kappa \log(1/\varepsilon))$ \\
+SGD & $\mathcal{O}(1/\varepsilon)$ & $\mathcal{O}(1)$ & $\mathcal{O}(1/\varepsilon)$ \\
+\midrule
+\multicolumn{4}{c}{\textbf{Nonconvex problems}} \\
+\midrule
+GD & $\mathcal{O}(1/\varepsilon^2)$ & $\mathcal{O}(n)$ & $\mathcal{O}(n/\varepsilon^2)$ \\
+SGD & $\mathcal{O}(1/\varepsilon^4)$ & $\mathcal{O}(1)$ & $\mathcal{O}(1/\varepsilon^4)$ \\
+\bottomrule
+\end{tabular}
+\end{document}

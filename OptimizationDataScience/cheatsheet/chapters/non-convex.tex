@@ -1,0 +1,11 @@
+\section*{Non-convex functions}
+
+$f$ 2$\times$ diff, $\lnorm \nabla^2 f(x) \rnorm \leq L \forall x \in X$. Then $f$ is $L$-sm.
+
+$f$ $L$-sm, $\gamma := 1/L$, GD yields: $\frac{1}{T} \sum_{t=0}^{T-1} \lnorm \nabla f(x_t) \rnorm^2 \leq \frac{2L}{T} \varepsilon_0$ and $\lim_{t\to\infty} \lnorm \nabla f(x_t) \rnorm^2 = 0$. Proof using sufficient decr, which doesn't require conv.
+
+Lemma: For $f$ $L$-sm, GD cannot overshoot a critial point ($\nabla f(x) = 0$).
+
+
+% 6.2 case study Deep Linear Network (skipped for now)
+

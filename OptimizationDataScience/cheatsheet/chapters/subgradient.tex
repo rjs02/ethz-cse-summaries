@@ -1,0 +1,64 @@
+\section*{Subgradient methods}
+
+\begin{mathbox}
+    {Subgradient}
+    {$f: \dom(f) \to \R \cup \{+\infty\}$, co. $g \in \R^d$ is a subgradient of $f$ at $x$ if}
+    {f(y) \geq f(x) + g^\top (y-x), \ \forall y \in \dom(f)}
+    {Set of all subgradients at $x$ is called subdifferential $\partial f(x)$.}
+\end{mathbox}
+
+If $f$ co and diff at $x$, then $\partial f(x) = \{\nabla f(x)\}$.
+
+$f$ co, $\dom(f)$ open, $B \in \R_+$. The following are equiv:
+\begin{itemize}
+    \item $\lnorm g \rnorm \leq B, \ \forall x \in \dom(f), \forall g \in \partial f(x)$.
+    \item $\labs f(x) - f(y) \rabs \leq B \lnorm x - y \rnorm, \ \forall x, y \in \dom(f)$.
+\end{itemize}
+
+If $\mathbf{0} \in \partial f(x), x \in \dom(f)$, then $x$ is a \textit{global} minimum.
+
+$f$ co, $x \in \dom(f)$. Then $\partial f(x)$ is co and closed. 
+
+$f$ func where $\dom(f)$ is co and $\partial f(x) \neq \varnothing \ \forall x \in \dom(f)$. Then $f$ is co over $\dom(f)$. 
+
+Directional derivatives: $f'(x;d) = \lim_{\delta \to 0^+} \frac{f(x + \delta d) - f(x)}{\delta}$. For $f$ diff $f'(x;d) = \nabla f(x)^\top d$. For subgr: $f'(x;d) = \max_{g \in \partial f(x)} g^\top d$.
+
+\textbf{Calculating subgradients:} 
+\begin{itemize}
+    \item \textit{Conic combination:} $h(x) = \lambda f(x) + \mu g(x); \lambda, \mu \geq 0; f, g$ co, then $\partial h(x) = \lambda \partial f(x) + \mu \partial g(x)\ \forall x \in \text{int}(\dom(h))$.
+    \item \textit{Affine compos.:} $h(x) = f(Ax + b); f$ co, then $\partial h(x) = A^\top \partial f(Ax + b)$.
+    \item \textit{Supremum:} $h(x) = \sup_{\alpha \in \mathcal{A}} f_\alpha (x)$ and $f_\alpha$ co, then: $\partial h(x) \supseteq \text{conv}\{\partial f_\alpha (x) \mid \alpha \in \alpha(x)\}$ where $\alpha(x) = \{\alpha : h(x) = f_\alpha (x)\}$
+    \item \textit{Superposition:} $h(x) = F(f_1(x),\dots,f_m(x))$ where $F(y_1, \dots, y_m)$ is non-decr and co, then $\partial h(x) \supseteq \left\{ \sum_{i=1}^{m} d_i \partial f_i(x) : (d_1, \dots, d_m) \in \partial F(y_1, \dots, y_m) \right\}$.
+\end{itemize}
+
+
+\textbf{Subgradient method:} $f$ co, possibly non-diff. Goal $\min f(x)$ s.t. $x \in X \subseteq \dom(f)$. $X$ closed+co. Let $R^2 = \max_{x,y \in X} \lnorm x - y \rnorm_2^2, B = \sup_{x,y \in X} \frac{\labs f(x) - f(y) \rabs}{\lnorm x - y \rnorm_2}$. Init $x_1 \in X$. For $t = 1, \dots, T$:
+\begin{align*}
+    \xtp = \Pi_X (x_t - \gamma_t g_t), \ g_t \in \partial f(x_t)
+\end{align*}
+For $f$ diff, this reduces to Proj GD. Subgr. Descent is not necessarily a descent method and moving along the negative direction of $g_t$ is not guaranteed to decrease the function value.
+
+Stepsize choices:
+\begin{itemize}
+    \item \textit{Constant:} $\gamma_t \equiv \gamma > 0$
+    \item \textit{Scaled:} $\gamma_t = \gamma / \lnorm g_t \rnorm_2$
+    \item \textit{Diminishing, non-summable:} $\sum \gamma_t = \infty, \lim_{t\to\infty} \gamma_t = 0$
+    \item \textit{Sq-summable:} $\sum \gamma_t = \infty, \sum \gamma_t^2 < \infty$ (e.g. $1/t$)
+    \item \textit{Polyak:} Assuming $\fxo$ known. $\gamma_t = \varepsilon_t / \lnorm g_t \rnorm_2^2$
+\end{itemize}
+
+$f$ co, then SubgrD satisfies
+\begin{align*}
+    \min \varepsilon_t \leq \left( \sum_{t=1}^{T} \gamma_t \right)^{-1} \left( \frac{1}{2} \lnorm x_1 - \xo \rnorm_2^2 + \frac{1}{2} \sum_{t=1}^{T} \gamma_t^2 \lnorm g_t \rnorm_2^2 \right) \\
+    f(\hat{x}_T) - \fxo \leq \left( \sum_{t=1}^{T} \gamma_t \right)^{-1} \left( \frac{1}{2} \lnorm x_1 - \xo \rnorm_2^2 + \frac{1}{2} \sum_{t=1}^{T} \gamma_t^2 \lnorm g_t \rnorm_2^2 \right) 
+\end{align*}
+where $\hat{x}_T = \left( \sum_{t=1}^{T} \gamma_t \right)^{-1} \left( \sum_{t=1}^{T} \gamma_t x_t \right) \in X$.
+
+Using bounds $R, B$ and changing summation to $T_0 \geq 1$:
+\begin{align*}
+    \min_{T_0 \leq 1 \leq T} f(x_t) - \fxo \leq \frac{\frac{R^2}{2}+ \frac{1}{2}\sum_{t=T_0}^{T}\gamma_t^2 B^2}{\sum_{t=T_0}^{T} \gamma_t}
+\end{align*}
+
+% TODO: cvg results for each stepsize choice p. 219 ff
+
+% TODO rest of chapter

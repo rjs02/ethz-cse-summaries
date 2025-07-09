@@ -1,0 +1,90 @@
+\section*{Basics}
+
+% TODO: not every comment has TODO in front => search comments in general
+
+\begin{noeqmathbox}
+    {\textbf{! General !}}
+    {}
+    {\textbf{Constrained opt: }$\nabla f(\xo) = 0$ not required $\to$ optimality cond! Check that $x^*$ and iterates are feasible! \\
+    Remove const terms in minimization.\\
+    For upper bounds: Remove subtractions of non-neg terms \& use monotonicity of functions.\\
+    split norm sum $\lnorm x \pm y \rnorm^2 = \lnorm x \rnorm^2 + \lnorm y \rnorm^2 \pm 2\langle x, y \rangle$\\
+    max $\geq$ avg: $\max_i x_i^2 \geq \frac{1}{d} \lnorm x \rnorm_2^2 = \frac{1}{d} \sum x_i^2$\\
+    Ineq. with e.g. indicator func: make case distinction.}
+\end{noeqmathbox}
+
+\begin{smallmathbox}
+    {Triangle ineq.}
+    {\lnorm x+y \rnorm \leq \lnorm x \rnorm + \lnorm y \rnorm \\ \text{(reverse tri ineq) }\labs \lnorm x \rnorm - \lnorm y \rnorm \rabs \leq \lnorm x-y \rnorm }
+\end{smallmathbox}
+
+\begin{smallmathbox}
+    {Parallelogram law}
+    {\newline\lnorm x+y \rnorm^2 + \lnorm x-y \rnorm^2 = 2\lnorm x \rnorm^2 + 2\lnorm y \rnorm^2}
+\end{smallmathbox}
+
+\begin{smallmathbox}
+    {Law of cosines}
+    {\newline\lnorm x-y \rnorm^2 = \lnorm x \rnorm^2 + \lnorm y \rnorm^2 - 2\langle x, y \rangle}
+\end{smallmathbox}
+
+\begin{smallmathbox}
+    {Cauchy-Schwarz}
+    {\labs \langle x, y \rangle\rabs \leq \lnorm x \rnorm \lnorm y \rnorm}
+\end{smallmathbox}
+
+\begin{mathbox}
+    {Jensen's inequality}
+    {$f$ conv, $\sum \lambda_i = 1$, $x_i \in \dom(f)$}
+    {f\left(\sum \lambda_i x_i\right) \leq \sum \lambda_i f(x_i)}
+    {$\Rightarrow f(\E[X]) \leq \E[f(X)]$}
+\end{mathbox}
+
+\begin{smallmathbox}
+    {Convex set}
+    {\lambda x + (1-\lambda)y \in C \quad \forall x, y \in C, \lambda \in [0,1]}
+\end{smallmathbox}
+
+\begin{smallmathbox}
+    {Spectral norm}
+    {\lnorm A \rnorm = \max_{\lnorm x \rnorm = 1} \lnorm Ax \rnorm\newline\text{Consequence: }\lnorm Ax \rnorm \leq \lnorm A \rnorm \lnorm x \rnorm}
+\end{smallmathbox}
+
+\begin{mathbox}
+    {Differentiability}
+    {$f: \dom(f)\subseteq \R^d \to \R^m$ is called diff'able at $x$ in the interior of $\dom(f)$ if $\exists A \in \R^{m \times d}$ and $r: \R^d \to \R^m$ s.t. $\forall y$ in neighborhood of $x$:}
+    {f(y) = f(x) + A(y-x) + r(y-x) \text{with} \lim_{v\to 0} \frac{\lnorm r(v) \rnorm}{\lnorm v \rnorm} = 0}
+    {We then define $D f(x)_{ij} = (\partial f_i / \partial x_j) (x)$.}
+\end{mathbox}
+
+\begin{mathbox}
+    {Lipschitz}
+    {$f$ diff'able, $\dom(f)$ convex, $B\in \R_+$. Following is equiv:}
+    {\lnorm f(x) - f(y) \rnorm \leq B \lnorm x-y \rnorm \ (f\text{is }B\text{-Lipschitz}) \\
+    \lnorm Df(x) \rnorm \leq B \ \text{(bounded differential)}}
+    {}
+\end{mathbox}
+
+\begin{mathbox}
+    {Young's inequality}
+    {$p,q > 0$ s.t. $1/p + 1/q = 1$ and $a, b \geq 0$}
+    {ab \leq \frac{a^p}{p} + \frac{b^q}{q}, \quad ab \leq \frac{a^2}{2} + \frac{b^2}{2}}
+    {2nd part $p=q=2$. Equality holds iff $a^p = b^q$.}
+\end{mathbox}
+
+\textbf{Hölder's ineq: } $u^\top v \leq \lnorm u \rnorm_\infty \lnorm v \rnorm_1$ \textbf{AM-GM: } $n^{-1}\sum x_i \geq \sqrt[n]{\Pi x_i}$ $\Rightarrow$ w/ CS: $\vert x^\top y \vert \leq (\lnorm x \rnorm / \sqrt{c}) (\lnorm y \rnorm \sqrt{c}) \leq \frac{1}{2} (\lnorm x \rnorm^2 / c + c \lnorm y \rnorm^2)$
+
+Norms and seminorms are convex.
+
+Basic inequalities: $\ln(1+x) \leq x; 1-x \leq e^{-x}$; $\lnorm x \rnorm_2 \leq \lnorm x \rnorm_1 \leq \sqrt{d} \lnorm x \rnorm_2; \lnorm x \rnorm_\infty \leq \lnorm x \rnorm_2 \leq \sqrt{d} \lnorm x \rnorm_\infty$
+
+Hypograph: $\text{hyp} f = \{ (x,t) \mid f(x) \leq t \}$, epigraph: $\text{epi} f = \{ (x,t) \mid f(x) \geq t \}$
+
+Differentiation: $g = Ax+b \Rightarrow \nabla(f \circ g)(x) = A^\top \nabla f(Ax+b)$; $ f = x^\top Q x + b^\top x + c \Rightarrow \nabla f(x) = 2Qx + b$; $ \nabla x^\top A = A$; $ \nabla a^\top x = \nabla x^\top a = a$; $ \nabla b^\top A x = A^\top b$; $ \nabla x^\top x = 2x$; $ \nabla_w \lnorm y - Xw \rnorm_2^2 = 2X^\top (Xw-y)$
+
+Basic diff: $(fg)' = f'g + fg'; (f/g)' = (f'g - fg')/g^2; (f \circ g)' = f'(g)g'$
+
+% todo? mean value, fundamental theorem of calculus, Taylor, differentiability
+
+
+% todo? probability theory; expectation/variance; expectation hint from GA2

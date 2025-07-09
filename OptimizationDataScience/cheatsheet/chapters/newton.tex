@@ -1,0 +1,20 @@
+\section*{Newton's method}
+
+1D: $\xtp := x_t - f'(x_t) / f''(x_t), \ t \geq 0$.
+
+For optimization apply to $f'$: $\xtp := x_t - f'(x_t) / f''(x_t), \ t \geq 0$, resp. $\xtp := x_t - \nabla^2 f(x_t)^{-1} \nabla f(x_t)$.
+
+$f$ co, $2\times$ diff, $\nabla^2 f(x) \succ 0$ inv, then $\xtp$ from Newton satisfies $\xtp = \argmin_{x \in \R^d} f(x_t) + \nabla f(x_t)^\top (x - x_t) + \frac{1}{2} (x - x_t)^\top \nabla^2 f(x_t) (x - x_t)$.
+
+Let there be a ball $X \subseteq \dom(f)$ with center $\xo$ such that $\lnorm \nabla^2 f(x)^{-1} \rnorm \leq 1/\mu$ and $\lnorm \nabla^2 f(x) - \nabla^2 f(y) \rnorm \leq B \lnorm x - y \rnorm$, then for $x_t, \xtp$ resulting from a Newton step, the following holds: $\lnorm \xtp - \xo \rnorm \leq \frac{2B}{\mu} \lnorm x_t - \xo \rnorm^2$.
+
+% TODO some other cvg theorems, not sure if relevant enough
+
+$f$ $2\times$ diff, $\mu$-sc over open conv $X \subseteq \dom(f)$. Then $\nabla^2 f(x)$ is inv and $\lnorm \nabla^2 f(x)^{-1} \rnorm \leq 1/\mu$ for all $x \in X$.
+
+
+\section*{Quasi-Newton methods}
+
+Secant method (2nd derivative free!): Replace $f''(x)$ with $\frac{f'(x_t) - f'(\xtm)}{x_t - \xtm}$. 
+
+% TODO skipped whole chapter for now

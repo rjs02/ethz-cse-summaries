@@ -1,0 +1,123 @@
+\documentclass[8pt,landscape,a4paper]{extarticle}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{titlesec,fancyhdr,subcaption,amsmath,amsfonts,amsthm,amssymb,xcolor,ragged2e,graphicx}
+\usepackage[bookmarksopen=true]{hyperref}
+\usepackage{newpxtext,newpxmath,changepage,marginnote,mathtools,multicol,etoolbox,tcolorbox,pgf}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+
+\usepackage{enumitem}
+
+\setlist[enumerate]{itemsep=0pt, parsep=0pt, topsep=0pt, partopsep=0pt}
+
+\usepackage[citestyle=alphabetic,bibstyle=authortitle]{biblatex}
+\addbibresource{references.bib}
+
+\input{macros}
+
+% colors
+% \definecolor{mycolor}{HTML}{006EB8}
+\definecolor{mycolor}{HTML}{005a8a}
+\definecolor{textgray}{gray}{0.33}
+\definecolor{taborange}{HTML}{ff7f0e}
+
+\color{gray} % gray text
+\everymath{\color{mycolor}} % black math
+
+
+% section formatting
+\titleformat{\section}{\normalfont\large\itshape\color{black}}{\thesection}{1em}{\vspace{-0.4cm}}[\vspace{0cm}\titlerule\vspace*{-0.4cm}]
+% \newcommand{\rhdtitle}{\rlap{\protect\makebox[-1cm]{\S\nolinebreak}}}
+
+% margin notes (probably unused)
+\renewcommand*{\marginfont}{\footnotesize}
+\newcommand{\note}[1]{\marginnote{\raggedright\footnotesize #1}}
+\color{textgray}
+\makeatletter
+\def\tagform@#1{\maketag@@@{\textcolor{mycolor}{\textsf{(#1)}}}}
+\makeatother
+
+% line spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\setlength{\jot}{1pt}
+
+\newenvironment{mathbox}[4]{%
+\begin{tcolorbox}[
+ colframe=taborange,
+ colback=white,
+ sharp corners,
+ boxrule=0.5pt,
+ left=2pt,right=2pt,top=2pt,bottom=2pt,
+ before upper={\setlength{\abovedisplayskip}{1pt}\setlength{\belowdisplayskip}{1pt}}
+ ]
+ {\color{textgray}\textbf{(#1) }#2}
+\begin{align*}#3\end{align*}\vspace{-6pt}\textcolor{textgray}{#4}
+}{\end{tcolorbox}}
+
+\newenvironment{smallmathbox}[2]{%
+\begin{tcolorbox}[
+ colframe=taborange,
+ colback=white,
+ sharp corners,
+ boxrule=0.5pt,
+ left=2pt,right=2pt,top=2pt,bottom=2pt,
+ before upper={\setlength{\abovedisplayskip}{1pt}\setlength{\belowdisplayskip}{0pt}}
+ ]
+ {\color{textgray}\textbf{(#1) }\(#2\)}
+}{\end{tcolorbox}}
+
+\newenvironment{noeqmathbox}[3]{%
+\begin{tcolorbox}[
+ colframe=taborange,
+ colback=white,
+ sharp corners,
+ boxrule=0.5pt,
+ left=2pt,right=2pt,top=2pt,bottom=2pt,
+ before upper={\setlength{\abovedisplayskip}{1pt}\setlength{\belowdisplayskip}{1pt}}
+ ]
+ {\color{textgray}\textbf{(#1) }#2}
+
+ \textcolor{textgray}{#3}
+}{\end{tcolorbox}}
+
+\title{\selectfont\textbf{Optimization for Data Science\\Robin Sieber -- FS24 -- ETH Zürich}}
+\author{}
+\date{}
+
+\usepackage{etoolbox}
+\AtBeginEnvironment{align*}{\setlength{\abovedisplayskip}{1pt}}
+\AtEndEnvironment{align*}{\vspace{-6pt}}
+
+\begin{document}
+\begin{multicols}{4}
+    \raggedcolumns
+    \noindent
+    {\footnotesize\bfseries\color{mycolor}
+    Optimization for Data Science --- Robin Sieber --- FS24 --- ETH Zürich}
+    % \vspace{0.5em}
+    \hrule
+    % \vspace{0.5em}
+
+    % TODO: Lagrange Duality, Min-Max
+
+    \input{chapters/basics.tex}
+    \input{chapters/convex.tex}
+    \input{chapters/smooth-strongly-convex.tex}
+    \input{chapters/gd.tex}
+    \input{chapters/proj_gd.tex}
+    \input{chapters/cd.tex}
+    \input{chapters/non-convex.tex}
+    \input{chapters/frank-wolfe.tex}
+    \input{chapters/rest.tex}
+
+
+    \newpage
+    \input{chapters/newton.tex}
+    \input{chapters/subgradient.tex}
+    \input{chapters/mirror-smoothing-proximal.tex}
+
+\end{multicols}
+\end{document}

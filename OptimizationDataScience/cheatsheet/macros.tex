@@ -1,0 +1,46 @@
+\usepackage{amsmath} % Add this line to import the amsmath package
+% ------ MDP Stuff ------ %
+\newcommand{\states}{\mathcal{S}}
+\newcommand{\nstates}{\lvert\states\rvert}
+\newcommand{\actions}{\mathcal{A}}
+\newcommand{\nactions}{\lvert\actions\rvert}
+\newcommand{\timehorizon}{\mathcal{T}}
+\newcommand{\localNumStates}{n_{\text{loc}}}
+
+
+% ------ Math Stuff ------ %
+\DeclareMathOperator*{\ev}{\mathbb{E}}
+\DeclareMathOperator*{\Prob}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\jac}{\mathcal{J}}
+\newcommand{\K}{\mathcal{K}} % Krylov subspace
+\newcommand{\Lspace}{\mathcal{L}} % other subspace for KSP
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+% Optimization stuff
+% dom(f) domain of function f
+\DeclareMathOperator*{\dom}{\text{dom}}
+\newcommand{\fxo}{f(x^*)}
+\newcommand{\xo}{x^*}
+\newcommand{\tp}{{t+1}}
+\newcommand{\xtp}{x_{\tp}}
+\newcommand{\tm}{{t-1}}
+\newcommand{\xtm}{x_{\tm}}
+\newcommand{\ztp}{z_{\tp}}
+\newcommand{\ztm}{z_{\tm}}
+\newcommand{\ztph}{z_{t+\frac{1}{2}}}
+\newcommand{\ztmh}{z_{t-\frac{1}{2}}}
+
+% norms and abs
+\newcommand{\lnorm}{\left\lVert}
+\newcommand{\rnorm}{\right\rVert}
+\newcommand{\labs}{\left\lvert}
+\newcommand{\rabs}{\right\rvert}
+
+\newcommand{\hwb}{{\mathcal{H}_{w,b}}}

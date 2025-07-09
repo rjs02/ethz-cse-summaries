@@ -1,0 +1,67 @@
+\section*{Mirror Descent}
+Goal: Generalize SubgrD to non-Euclid. distances.
+
+\begin{mathbox}
+    {Bregman divergence}
+    {$\omega : X \to \R$ \textit{strictly(!)} conv, continuously diff on closed conv $X$.}
+    {V_\omega(x,y) = \omega(x) - \omega(y) - \nabla \omega(y)^\top (x-y)}
+    {}
+\end{mathbox}
+$V_\omega$ is not a valid distance: asymmetric and triangle ineq. may not hold--it is called distance-generating function.
+
+If $\omega$ $\sigma$-sc wrt some norm, then it holds $V_\omega (x,y) \geq \frac{\sigma}{2} \lnorm x - y \rnorm^2$.
+
+For well-defined $V_\omega, V_\psi$ and $a,b > 0$ it holds $V_{a\omega + b\psi}(x,y) = aV_\omega(x,y) + bV_\psi(x,y)$.
+
+Generalized Pythagorean: Let $\xo$ be Bregman proj of $x_0$ onto conv set $C \subset X$, $\xo = \argmin_{x \in C} V_\omega(x,x_0)$. Then for all $y \in C$: $V_\omega(y, x_0) \geq V_\omega(y, \xo) + V_\omega (\xo, x_0)$.
+
+\textbf{Prox-mapping}: $\text{Prox}_x (\xi) = \argmin_{u\in X} \{ V_\omega (u, x) + \langle \xi, u \rangle \}$, where $\omega$ is $1$-sc wrt some norm.
+
+\textbf{Mirror descent}:
+\begin{align*}
+    \xtp &= \text{Prox}_{x_t} (\gamma_t g_t) = \argmin_{x \in X} \{ V_\omega (x, x_t) + \langle \gamma_t g_t, x \rangle \} \\
+    &= \argmin_{x\in X} \{ \omega (x) + \langle \gamma_t g_t - \nabla \omega (x_t), x \rangle \}
+\end{align*}
+
+Example setups
+\begin{itemize}
+    \item[$\ell_2$:] $X \subseteq R^n, \omega(x) = \frac{1}{2} \lnorm x \rnorm_2^2, \lnorm \cdot \rnorm = \lnorm \cdot \rnorm_2$: $V_\omega(x,y) = \frac{1}{2} \lnorm x - y \rnorm_2^2; \text{Prox}_x (\xi) = \Pi_X (x - \xi) \ \Rightarrow$ SubgrD.
+    \item[$\ell_1$:] $X = \Delta_n, \omega(x) = \sum_{i=1}^{n} x_i \ln(x_i), \lnorm \cdot \rnorm = \lnorm \cdot \rnorm_1$: $V_\omega(x,y) = \sum_{i=1}^{n} x_i \ln(x_i/y_i)$ (Kullback-Leibler)$; \text{Prox}_x (\xi) = \left(\sum_{i=1}^{n} x_i \exp(-\xi_i)\right)^{-1} \begin{bmatrix} x_1 \exp(-\xi_1), \dots, x_n \exp(-\xi_n) \end{bmatrix}^\top$. Good for multiplicative updates with normalization.
+\end{itemize}
+
+\begin{smallmathbox}
+    {Three point iden.}
+    {\forall x,y,z \in \dom(\omega): V_\omega(x,z) = V_\omega (x,y) + V_\omega (y,z) - \langle \nabla \omega (z) - \nabla \omega (y), x-y \rangle}
+\end{smallmathbox}
+
+% Thm 11.7?
+
+
+\section*{Convex conjugate}
+
+$f: \dom(f) \to \R$, conv conj: $f^* (y) = \sup_{x\in\dom(f)} \{ x^\top y - f(x) \}$. $f$ conv is not necessary!
+
+Fenchel inequality follows from def.: $x^\top y \leq f(x) + f^* (y)$, which is a generalization of Young's ineq $x^\top y \leq \lnorm x \rnorm^2 / 2 + \lnorm y \rnorm^2 / 2$.
+
+If $f$ co, lower semi-continuous and proper, then $(f^*)^* = f$. That is $\lim \inf_{x\to x_0} f(x) \geq f(x_0)$ and $f(x) > -\infty$.
+
+$f$ $\mu$-sc $\Rightarrow$ $f^*$ is $1/\mu$-Lipschitz smooth and continuously diff.
+
+For $f, g$ proper, conv, semi-cont:
+\begin{align*}
+    (f+g)^* (x) &= \inf_{y} \{ f^* (y) + g^* (x-y) \} \\
+    (\alpha f)^* (x) &= \alpha f^* (x/\alpha), \ \alpha > 0
+\end{align*}
+
+
+% ===============================
+
+\section*{Smoothing techniques}
+Goal: Approximate non-sm/diff $f$ with smooth $f_\mu$ s.t. GD and AGD can be applied.
+
+Nesterov's smoothing: $f_\mu (x) = \max_{y \in \dom(f^*)} \{ x^\top y - f^* (y) - \mu \cdot d(y) \} = (f+\mu d)^* (x)$, where $d(y)$ is a sc, non-negative proximity function. $f_\mu$ is continuously diff and Lipschitz smooth.
+
+Moreau-Yosida: $f_\mu (x) = \min_{y\in \dom(f)} \{ f(y) + \frac{1}{2\mu} \lnorm x - y \rnorm_2^2 \}$ for $\mu > 0$. It is equiv to Nesterov with $d(y) = \frac{1}{2} \lnorm y \rnorm_2^2$.
+
+% TODO? Lasry-Lions, Ben-Tal-Teboulle, Randomized
+
